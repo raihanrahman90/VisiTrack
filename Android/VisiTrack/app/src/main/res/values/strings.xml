@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">VisiTrack</string>
 
-    <string name="dummy_number">79</string>
+    <string name="dummy_number">898</string>
     <string name="dummy_text">Lorem ipsum dolor sit amet.</string>
     <string name="dummy_text_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida elementum molestie. Integer sit amet aliquam eros, sit amet tempor.</string>
     <string name="dummy_time">14:20</string>
@@ -29,4 +29,11 @@
     <string name="camera_name">Camera Name</string>
     <string name="camera_statistics">Camera Statistics</string>
     <string name="violation_count">Violation Count</string>
+    <string name="welcome">Welcome</string>
+    <string name="to_visitrack">to VisiTrack</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
 </resources>
