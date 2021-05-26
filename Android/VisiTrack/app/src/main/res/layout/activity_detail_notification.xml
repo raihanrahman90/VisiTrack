@@ -17,12 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group_head"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="tv_head_id,tv_head_desc,tv_head_time,tv_head_date,tv_head_status,tv_head_type,tv_head_camera" />
-
     <TextView
         android:id="@+id/tv_head_id"
         android:layout_width="wrap_content"
@@ -100,12 +94,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="120dp" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group_value"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="tv_type,tv_camera,tv_date,tv_status,tv_time,tv_desc,tv_id" />
 
     <TextView
         android:id="@+id/tv_id"
