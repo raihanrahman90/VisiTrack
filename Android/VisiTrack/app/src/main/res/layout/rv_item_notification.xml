@@ -31,7 +31,7 @@
             app:layout_constraintEnd_toStartOf="@+id/tv_timestamp"
             app:layout_constraintStart_toStartOf="@+id/tv_head_violation"
             app:layout_constraintTop_toBottomOf="@+id/tv_head_violation"
-            tools:text="@string/dummy_violation" />
+            tools:text="@string/dummy_text" />
 
         <TextView
             android:id="@+id/tv_timestamp"

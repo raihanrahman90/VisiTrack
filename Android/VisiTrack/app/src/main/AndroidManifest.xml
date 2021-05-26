@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VisiTrack">
-        <activity android:name=".DetailNotificationActivity"></activity>
+        <activity android:name=".DetailCameraActivity" />
+        <activity android:name=".DetailNotificationActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
