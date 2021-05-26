@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_general"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@string/general_statistics"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/hr_general"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@color/cardview_dark_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_general" />
+
+        <TextView
+            android:id="@+id/tv_head_visitor_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/visitor_count"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_general"
+            app:layout_constraintTop_toBottomOf="@+id/hr_general" />
+
+        <TextView
+            android:id="@+id/tv_visitor_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="20dp"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_head_visitor_count"
+            app:layout_constraintTop_toTopOf="@+id/tv_head_visitor_count"
+            tools:text="@string/dummy_number"/>
+
+        <TextView
+            android:id="@+id/tv_head_camera_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/camera_count"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_head_visitor_count"
+            app:layout_constraintTop_toBottomOf="@+id/tv_head_visitor_count" />
+
+        <TextView
+            android:id="@+id/tv_camera_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="20dp"
+            android:textAlignment="textEnd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_head_camera_count"
+            app:layout_constraintTop_toTopOf="@+id/tv_head_camera_count"
+            tools:text="@string/dummy_number" />
+
+        <TextView
+            android:id="@+id/tv_head_another"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:text="Another data"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_head_camera_count"
+            app:layout_constraintTop_toBottomOf="@+id/tv_head_camera_count" />
+
+        <TextView
+            android:id="@+id/tv_another"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="textEnd"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_head_another"
+            app:layout_constraintTop_toTopOf="@+id/tv_head_another"
+            tools:text="@string/dummy_number" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

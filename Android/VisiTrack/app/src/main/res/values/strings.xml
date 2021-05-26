@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">VisiTrack</string>
+    <string name="general_statistics">General Statistics</string>
+    <string name="visitor_count">Visitor Count</string>
+    <string name="camera_count">Camera Count</string>
+    <string name="violation">Violation :</string>
+    <string name="notification">Notification</string>
+    <string name="show_all_notification">Show all notification</string>
+    <string name="camera_image">Camera Image</string>
+    <string name="camera">Camera</string>
+
+    <string name="dummy_number">79</string>
+    <string name="dummy_violation">Crowd detected</string>
+    <string name="dummy_time">14:20</string>
+    <string name="dummy_camera">Dummy Camera</string>
 </resources>
