@@ -36,4 +36,6 @@
     <string name="password">Password</string>
     <string name="register">Register</string>
     <string name="email">Email</string>
+    <string name="visitrack">VisiTrack</string>
+    <string name="slogan">For Your Future Technology</string>
 </resources>
