@@ -1,2 +1,3 @@
 rootProject.name = "VisiTrack"
 include ':app'
+include ':core'
