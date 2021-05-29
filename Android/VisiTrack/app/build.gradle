@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
 }
+apply from: '../shared_dependencies.gradle'
 
 android {
     compileSdkVersion 30
@@ -38,18 +39,11 @@ android {
 dependencies {
     implementation project(":core")
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "androidx.core:core-ktx:$core_version"
-    implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation "com.google.android.material:material:$material_version"
-    implementation 'androidx.preference:preference:1.1.1'
-    testImplementation "junit:junit:$junit_version"
-    androidTestImplementation "androidx.test.ext:junit:$junit_test_version"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 
     //UI
-    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
     implementation "androidx.annotation:annotation:$annotation_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "de.hdodenhof:circleimageview:$circleimageview_version"
+    implementation "androidx.preference:preference-ktx:$preference_version"
 }
