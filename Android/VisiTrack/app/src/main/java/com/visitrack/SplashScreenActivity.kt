@@ -8,7 +8,7 @@ import com.visitrack.databinding.ActivitySplashscreenBinding
 
 class SplashScreenActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashscreenBinding
-    lateinit var visitrackhandler: Handler
+    private lateinit var visitrackHandler: Handler
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashscreenBinding.inflate(layoutInflater)
@@ -16,8 +16,8 @@ class SplashScreenActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        visitrackhandler = Handler(mainLooper)
-        visitrackhandler.postDelayed({
+        visitrackHandler = Handler(mainLooper)
+        visitrackHandler.postDelayed({
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()

@@ -38,4 +38,7 @@
     <string name="email">Email</string>
     <string name="visitrack">VisiTrack</string>
     <string name="slogan">For Your Future Technology</string>
+    <string name="full_name">Full Name</string>
+    <string name="company">Company</string>
+    <string name="logo">Logo</string>
 </resources>
