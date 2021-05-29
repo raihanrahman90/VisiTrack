@@ -7,6 +7,8 @@ import android.os.Handler
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessaging
 import com.visitrack.databinding.ActivitySplashscreenBinding
+import com.visitrack.list.MainActivity
+import com.visitrack.start.ui.LoginActivity
 
 class SplashScreenActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashscreenBinding

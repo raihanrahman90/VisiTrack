@@ -1,4 +1,4 @@
-package com.visitrack
+package com.visitrack.start.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

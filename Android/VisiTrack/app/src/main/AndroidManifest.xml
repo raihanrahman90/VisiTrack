@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VisiTrack">
         <activity android:name=".settings.SettingsActivity"></activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".start.ui.RegisterActivity" />
+        <activity android:name=".start.ui.LoginActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,9 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailCameraActivity" />
-        <activity android:name=".DetailNotificationActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".camera.DetailCameraActivity" />
+        <activity android:name=".violation.DetailNotificationActivity" />
+        <activity android:name=".list.MainActivity" />
     </application>
 
 </manifest>
