@@ -1,8 +1,8 @@
-package com.visitrack
+package com.visitrack.settings
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceFragment
+import com.visitrack.R
 import com.visitrack.databinding.ActivitySettingsBinding
 
 class SettingsActivity : AppCompatActivity() {
