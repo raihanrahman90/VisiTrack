@@ -48,4 +48,5 @@
     <string name="logout">Logout</string>
     <string name="language">Language</string>
     <string name="push_notification">Push Notification</string>
+    <string name="register_here">Don\'t have account? Register here</string>
 </resources>
