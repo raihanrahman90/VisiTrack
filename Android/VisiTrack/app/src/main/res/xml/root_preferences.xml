@@ -1,0 +1,13 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <DropDownPreference
+        app:key="@string/language_key"
+        app:title="@string/language"
+        app:entries="@array/language_entry"
+        app:entryValues="@array/language_values"/>
+
+    <SwitchPreferenceCompat
+        app:key="@string/notification_key"
+        app:title="@string/push_notification"/>
+
+</PreferenceScreen>

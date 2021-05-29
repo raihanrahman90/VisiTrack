@@ -5,9 +5,11 @@
     <string name="dummy_text_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida elementum molestie. Integer sit amet aliquam eros, sit amet tempor.</string>
     <string name="dummy_time">14:20</string>
     <string name="dummy_date">17 June 2000</string>
-
     <string name="dummy_camera">Dummy Camera</string>
     <string name="camera_image">Camera Image</string>
     <string name="violation">Violation</string>
     <string name="violation_text">%1$s found in %2$s</string>
+
+    <string name="notification_channel_id">fcm_visitrack_channel</string>
+    <string name="notification_channel_name">Violation</string>
 </resources>
