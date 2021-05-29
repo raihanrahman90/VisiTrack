@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "963094017396",
+    "project_id": "visitrack-6f31e",
+    "storage_bucket": "visitrack-6f31e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:963094017396:android:68029964eb6556c91e6821",
+        "android_client_info": {
+          "package_name": "com.visitrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "963094017396-43sun2losmr16na4hi1kbua9uopu2e16.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFiVdCiorH6OWATiOO-GrP4bFGMEMmeBk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "963094017396-43sun2losmr16na4hi1kbua9uopu2e16.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
