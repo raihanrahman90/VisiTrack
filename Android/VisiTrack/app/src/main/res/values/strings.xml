@@ -52,4 +52,6 @@
 
     //toolbar
     <string name="toolbar_visitrack">Visitrack</string>
+    <string name="toolbar_detail_visitrack">Detail Notification</string>
+    <string name="toolbar_camera_visitrack">Detail Camera</string>
 </resources>

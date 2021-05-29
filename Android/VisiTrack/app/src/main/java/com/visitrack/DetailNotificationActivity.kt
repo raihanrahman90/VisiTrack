@@ -10,5 +10,15 @@ class DetailNotificationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailNotificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setUpToolbarVisitrack()
+        setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_detail_visitrack)))
+    }
+    private fun setUpToolbarVisitrack(){
+        setSupportActionBar(binding.visitrackDetailToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun setUpToolbarTitleVisitrack(title: String){
+        supportActionBar?.title = title
     }
 }

@@ -10,16 +10,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setUpTollbarVisitrack()
-        setUpTollbarTitleVisitrack(resources.getString((R.string.toolbar_visitrack)))
+        setUpToolbarVisitrack()
+        setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_visitrack)))
     }
 
-    private fun setUpTollbarVisitrack(){
+    private fun setUpToolbarVisitrack(){
         setSupportActionBar(binding.visitrackToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
-    private fun setUpTollbarTitleVisitrack(title: String){
+    private fun setUpToolbarTitleVisitrack(title: String){
         supportActionBar?.title = title
     }
 }

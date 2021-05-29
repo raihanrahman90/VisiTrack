@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".DetailNotificationActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/visitrack_detail_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:layout_collapseMode="pin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
+
     <ImageView
         android:id="@+id/iv_notification"
         android:layout_width="match_parent"
@@ -15,7 +25,7 @@
         android:minHeight="250dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/visitrack_detail_toolbar" />
 
     <TextView
         android:id="@+id/tv_head_id"
@@ -178,5 +188,5 @@
         android:text="@string/detection_error"
         app:layout_constraintStart_toStartOf="@+id/tv_status"
         app:layout_constraintTop_toTopOf="@+id/btn_finished" />
-
+-->
 </androidx.constraintlayout.widget.ConstraintLayout>

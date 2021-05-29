@@ -10,5 +10,16 @@ class DetailCameraActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailCameraBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setUpToolbarVisitrack()
+        setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_camera_visitrack)))
+    }
+
+    private fun setUpToolbarVisitrack(){
+        setSupportActionBar(binding.visitrackCameraToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    private fun setUpToolbarTitleVisitrack(title: String){
+        supportActionBar?.title = title
     }
 }
