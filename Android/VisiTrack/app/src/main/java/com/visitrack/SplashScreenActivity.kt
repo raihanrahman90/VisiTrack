@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
+import com.google.firebase.messaging.FirebaseMessaging
 import com.visitrack.databinding.ActivitySplashscreenBinding
 
 class SplashScreenActivity : AppCompatActivity() {
@@ -15,6 +17,11 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
+
+        FirebaseMessaging.getInstance().subscribeToTopic("news")
+        FirebaseMessaging.getInstance().token.addOnSuccessListener { deviceToken ->
+            Log.d(MainActivity::class.java.simpleName, "Refreshed token: $deviceToken")
+        }
 
         visitrackHandler = Handler(mainLooper)
         visitrackHandler.postDelayed({

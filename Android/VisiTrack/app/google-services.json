@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:963094017396:android:68029964eb6556c91e6821",
         "android_client_info": {
-          "package_name": "com.visitrack.core"
+          "package_name": "com.visitrack.app"
         }
       },
       "oauth_client": [
