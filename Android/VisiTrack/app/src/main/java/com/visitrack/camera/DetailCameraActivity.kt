@@ -2,14 +2,17 @@ package com.visitrack.camera
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.lifecycle.Observer
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.visitrack.R
 import com.visitrack.core.data.Resource
-import com.visitrack.core.domain.model.Camera
 import com.visitrack.databinding.ActivityDetailCameraBinding
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 
+@ExperimentalCoroutinesApi
+@FlowPreview
 class DetailCameraActivity : AppCompatActivity() {
 
     private lateinit var viewModel: DetailCameraViewModel
@@ -25,19 +28,35 @@ class DetailCameraActivity : AppCompatActivity() {
             this,ViewModelProvider.NewInstanceFactory()
         ).get(DetailCameraViewModel::class.java)
 
+        //getDetail(id)
 
     }
-    private fun display(camera:Camera) {
-        with(binding) {
-            Glide.with(this@DetailCameraActivity)
-                .load((camera.imageUrl))
-                .into(binding.ivCamera)
-            binding.tvId.text = camera.idCamera.toString()
-            binding.tvName.text = camera.nameCamera
-            binding.tvDesc.text = camera.descCamera
-            binding.tvVisitorCount.text = camera.visitorCount.toString()
-            binding.tvViolationCount.text = camera.violationCount.toString()
-        }
+
+    private fun getDetail (id: Int){
+        viewModel.getDetailCamera(id).observe(this, { camera ->
+            when(camera){
+                is Resource.Loading -> {
+                    binding.progressBar.visibility= View.VISIBLE
+                }
+                is Resource.Success -> {
+                    binding.progressBar.visibility= View.GONE
+                    val camera = camera.data
+                    Glide.with(this@DetailCameraActivity)
+                        .load((camera?.imageUrl))
+                        .into(binding.ivCamera)
+                    with(binding) {
+                        binding.tvId.text = camera?.idCamera.toString()
+                        binding.tvName.text = camera?.nameCamera
+                        binding.tvDesc.text = camera?.descCamera
+                        binding.tvVisitorCount.text = camera?.visitorCount.toString()
+                        binding.tvViolationCount.text = camera?.violationCount.toString()
+                    }
+                }
+                is Resource.Error ->{
+                    binding.progressBar.visibility = View.GONE
+                }
+            }
+        })
     }
 
     private fun setUpToolbarVisitrack(){
