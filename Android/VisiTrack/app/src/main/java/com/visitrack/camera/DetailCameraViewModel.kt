@@ -12,8 +12,4 @@ class DetailCameraViewModel(private val useCase: UseCase) : ViewModel() {
     fun getDetailCamera(id: Int): LiveData<Resource<Camera>> =
         useCase.getCameraDetail(id).asLiveData()
 
-    fun getUpdateViolationCamera (status: String) {
-        useCase.updateViolation(status)
-    }
-
 }
