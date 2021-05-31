@@ -12,13 +12,17 @@ from mysql.connector import Error
 def create_server_connection():
     connection = None
     try:
-        connection = mysql.connector.connect(user='root', 
-        password='12345678', host='localhost', port='3306', database='user_db'
-        )
+	conn = connector.connect(
+    		"visitrack-314902:us-central1:visitrack-user-db", 
+    		"pymysql",
+		user="root",
+    		password="12345678",
+    		db="user_db"
+	)
         print("MySQL Database connection successful")
     except Error as err:
         print(f"Error: '{err}'")
 
-    return connection
+    return conn
 
 create_server_connection()
