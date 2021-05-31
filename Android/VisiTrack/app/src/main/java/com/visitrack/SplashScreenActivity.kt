@@ -10,6 +10,7 @@ import android.os.Handler
 import android.util.Log
 import android.widget.Toast
 import com.google.firebase.messaging.FirebaseMessaging
+import com.visitrack.core.utils.TokenPreference
 import com.visitrack.databinding.ActivitySplashscreenBinding
 import com.visitrack.list.MainActivity
 import com.visitrack.start.ui.LoginActivity
@@ -24,6 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
+        //Subscribe Push Notification
         FirebaseMessaging.getInstance().subscribeToTopic("news")
         FirebaseMessaging.getInstance().token.addOnSuccessListener { deviceToken ->
             Log.d(MainActivity::class.java.simpleName, "Refreshed token: $deviceToken")
@@ -33,10 +35,17 @@ class SplashScreenActivity : AppCompatActivity() {
             clipboard.setPrimaryClip(token)
         }
 
+        //For Login Preference
+        val tokenPreference = TokenPreference(this)
+
         visitrackHandler = Handler(mainLooper)
         visitrackHandler.postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
+            //Checking if already logged in or not
+            if (tokenPreference.getToken().isNullOrBlank()){
+                startActivity(Intent(this, LoginActivity::class.java))
+            } else {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
             finish()
         }, 3000)
     }

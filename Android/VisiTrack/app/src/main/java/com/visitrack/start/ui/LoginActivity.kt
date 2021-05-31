@@ -24,15 +24,18 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-
             R.id.btn_login -> {
                 val passwords = binding.contentLogin.edtPassword.text.toString().trim()
                 val username = binding.contentLogin.edtUsername.text.toString().trim()
-                if (username.equals("")) {
+                if (username == "") {
                     binding.contentLogin.edtUsername.error = "Please Enter Your Username"
-                } else if (passwords.equals("")) {
+                    return
+                } else if (passwords == "") {
                     binding.contentLogin.edtPassword.error = "Please Enter Your Password"
+                    return
                 }
+
+
             }
         }
     }
