@@ -24,7 +24,7 @@ utils_ops.tf = tf.compat.v1
 tf.gfile = tf.io.gfile
 
 def load_model():
-  model_dir = r"C:\Users\Asus\.keras\datasets\humanModel\saved_model"
+  model_dir = r"gs://visitrack_storage/SavedModel" 											##load model from cloudstorage(bucket:visitrack_storage)
   print(model_dir)
   model = tf.saved_model.load(str(model_dir))
   model = model.signatures['serving_default']
@@ -136,13 +136,13 @@ def bicycle_detect(image,classes,score,boxes):
             center=(int(((xmin+xmax)/2)*w),int(((ymin+ymax)/2)*h))
             cv2.circle(image,center,10,(0,0,255),-1)
             
-            file_name=os.path.join('E:/TEST/',dt_string+'.jpg')
+            file_name=os.path.join('gs://visitrack_storage/Output_Folder',dt_string+'.jpg') 					##image output directory (cloudstorage)
             cv2.imwrite(file_name,image)
 def runProgram():
     import cv2
     detection_model = load_model()
 
-    video=cv2.VideoCapture(r'E:\TEST\6p-c3.avi')
+    video=cv2.VideoCapture(r'https://github.com/nblakbar10/VisitrackDataset/blob/main/pedestrians.mp4?raw=true')	##video input test
     while(True):
         try:
             ret,img=video.read()
