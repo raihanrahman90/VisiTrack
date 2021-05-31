@@ -9,8 +9,8 @@ import com.visitrack.core.domain.repository.IRepository
 import kotlinx.coroutines.flow.Flow
 
 class Interactor(private val repository: IRepository): UseCase {
-    override fun login(): Flow<Resource<User>> {
-        return repository.login()
+    override fun login(username: String, password: String, token: String): Flow<Resource<User>> {
+        return repository.login(username, password, token)
     }
 
     override fun register(user: User) {
