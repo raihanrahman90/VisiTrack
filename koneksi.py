@@ -8,6 +8,7 @@ Original file is located at
 """
 import mysql.connector
 from mysql.connector import Error
+from google.cloud.sql.connector import connector
 
 def create_server_connection():
     connection = None
