@@ -18,7 +18,7 @@ def create_server_connection():
                 "pymysql",
                 user="root",
                 password="12345678",
-                db="user_db"
+                db="visitrack-user-db"
         )
         print("MySQL Database connection successful")
     except Error as err:
