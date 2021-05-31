@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.visitrack.R
 import com.visitrack.core.data.Resource
@@ -80,6 +81,12 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+
+        with(binding.contentNotification.rvNotification){
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            setHasFixedSize(true)
+            adapter = notificationAdapter
+        }
     }
 
     private fun getCamera(){
@@ -99,6 +106,11 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+        with(binding.contentCamera.rvNotification){
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            setHasFixedSize(true)
+            adapter = cameraAdapter
+        }
     }
     private fun setUpToolbarVisitrack(){
         setSupportActionBar(binding.visitrackToolbar)
