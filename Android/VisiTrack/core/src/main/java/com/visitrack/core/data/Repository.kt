@@ -1,8 +1,10 @@
 package com.visitrack.core.data
 
 import com.visitrack.core.data.remote.RemoteDataSource
-import com.visitrack.core.data.remote.model.LoginPost
-import com.visitrack.core.data.remote.model.LoginResponse
+import com.visitrack.core.data.remote.model.login.LoginPost
+import com.visitrack.core.data.remote.model.login.LoginResponse
+import com.visitrack.core.data.remote.model.register.RegisterPost
+import com.visitrack.core.data.remote.model.register.RegisterResponse
 import com.visitrack.core.data.remote.network.ApiResponse
 import com.visitrack.core.domain.model.Camera
 import com.visitrack.core.domain.model.Statistics
@@ -27,9 +29,18 @@ class Repository(private val remoteDataSource: RemoteDataSource): IRepository {
 
         }.asFlow()
 
-    override fun register(user: User) {
-        TODO("Not yet implemented")
-    }
+    override fun register(username: String, password: String): Flow<Resource<User>> =
+        object : NetworkBoundResource<User, RegisterResponse>() {
+            override suspend fun load(data: RegisterResponse): Flow<User> {
+                return listOf(DataMapper.mapRegisterResponseToUser(data)).asFlow()
+            }
+
+            override suspend fun createCall(): Flow<ApiResponse<RegisterResponse>> {
+                val data = RegisterPost(username, password)
+                return remoteDataSource.register(data)
+            }
+
+        }.asFlow()
 
     override fun getStatistics(): Flow<Resource<Statistics>> {
         TODO("Not yet implemented")

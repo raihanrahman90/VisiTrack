@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface IRepository {
     fun login(username: String, password: String, token: String): Flow<Resource<User>>
-    fun register(user: User)
+    fun register(username: String, password: String): Flow<Resource<User>>
     fun getStatistics(): Flow<Resource<Statistics>>
     fun getNotificationList(): Flow<Resource<List<Violation>>>
     fun getCameraList(): Flow<Resource<List<Camera>>>

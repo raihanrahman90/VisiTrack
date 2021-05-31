@@ -1,4 +1,4 @@
-package com.visitrack.core.data.remote.model
+package com.visitrack.core.data.remote.model.login
 
 import com.google.gson.annotations.SerializedName
 

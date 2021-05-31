@@ -13,8 +13,8 @@ class Interactor(private val repository: IRepository): UseCase {
         return repository.login(username, password, token)
     }
 
-    override fun register(user: User) {
-        repository.register(user)
+    override fun register(username: String, password: String): Flow<Resource<User>> {
+        repository.register(username, password)
     }
 
     override fun getStatistics(): Flow<Resource<Statistics>> {
