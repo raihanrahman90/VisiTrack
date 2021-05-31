@@ -40,6 +40,13 @@ def index():
             db.child("users").child(item.key()).update({"token":token})
             encoded = jwt.encode({"username": username, "password":password}, key, algorithm="HS256")
             return jsonify({"success":success, "token":encoded})
-            break
     return jsonify({"success":"false"})
 
+
+@app.route("/register", methods=['POST'])
+def daftar():
+    username = request.json['username']
+    password = request.json['password']
+    data = {"username":username, "password":password}
+    db.child('users').push(data)
+    return jsonify({"success":"true"})
