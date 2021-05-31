@@ -2,7 +2,6 @@ import os
 import time
 from flask import Flask, jsonify, request
 from threading import Thread
-from tasks import runProgram, getJumlahOrang
 import pyrebase
 import jwt
 key = "secret"
