@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VisiTrack</string>
+
+    <string name="dummy_number">898</string>
+    <string name="dummy_text">Lorem ipsum dolor sit amet.</string>
+    <string name="dummy_text_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi gravida elementum molestie. Integer sit amet aliquam eros, sit amet tempor.</string>
+    <string name="dummy_time">14:20</string>
+    <string name="dummy_date">17 Juni 2000</string>
+    <string name="dummy_camera">Dummy Camera</string>
+
+    <string name="language_key">bahasa</string>
+    <string name="notification_key">notifikasi</string>
+
+    <string name="general_statistics">Statistik Umum</string>
+    <string name="visitor_count">Jumlah Pengunjung</string>
+    <string name="camera_count">Jumlah Kamera</string>
+    <string name="violation">Pelanggaran :</string>
+    <string name="notification">Notifikasi</string>
+    <string name="show_all_notification">Tampilkan semua notifikasi</string>
+    <string name="camera_image">Gambar kamera</string>
+    <string name="camera">Kamera</string>
+    <string name="notification_image">Gambar Notifikasi</string>
+    <string name="violation_id">ID Pelanggaran</string>
+    <string name="violation_type">Tipe Pelanggaran</string>
+    <string name="time">Waktu</string>
+    <string name="date">Tanggal</string>
+    <string name="description">Deskripsi</string>
+    <string name="status">Status</string>
+    <string name="finished">Selesai</string>
+    <string name="detection_error">Deteksi eror</string>
+    <string name="camera_id">ID Kamera</string>
+    <string name="camera_name">Nama Kamera</string>
+    <string name="camera_statistics">Statistik</string>
+    <string name="violation_count">Jumlah Pelanggaran</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="to_visitrack">di Visitrack</string>
+    <string name="login">Masuk</string>
+    <string name="username">Username</string>
+    <string name="password">Kata sandi</string>
+    <string name="register">Daftar</string>
+    <string name="email">Email</string>
+    <string name="visitrack">VisiTrack</string>
+    <string name="slogan">For Your Future Technology</string>
+    <string name="full_name">Nama Panjang</string>
+    <string name="company">Perusahaan</string>
+    <string name="logo">Logo</string>
+    <string name="settings">Pengaturan</string>
+    <string name="logout">Keluar</string>
+    <string name="language">Bahasa</string>
+    <string name="push_notification">Push Notification</string>
+    <string name="register_here">Belum punya akun? Daftar sekarang!</string>
+
+    //toolbar
+    <string name="toolbar_visitrack">Visitrack</string>
+    <string name="toolbar_detail_visitrack">Detail Notifikasi</string>
+    <string name="toolbar_camera_visitrack">Detail Kamera</string>
+</resources>

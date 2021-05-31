@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.OrientationHelper
 import com.bumptech.glide.Glide
 import com.visitrack.R
 import com.visitrack.core.data.Resource
@@ -107,7 +108,8 @@ class MainActivity : AppCompatActivity() {
             }
         })
         with(binding.contentCamera.rvNotification){
-            layoutManager = LinearLayoutManager(this@MainActivity)
+            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+            OrientationHelper.HORIZONTAL
             setHasFixedSize(true)
             adapter = cameraAdapter
         }
