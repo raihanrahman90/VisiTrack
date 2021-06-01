@@ -17,7 +17,7 @@ thread.start()
 db = getConnection()
 @app.route("/")
 def percobaan():
-    return "A"
+    return "nabil"
 @app.route("/login", methods=['POST', 'GET'])
 def index():
     username = request.json['username']
@@ -66,3 +66,6 @@ def getPelanggaranId(id):
 @app.route("/gambar/<namafile>")
 def gambar(namafile):
     return send_file(namafile, mimetype='image/gif')
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
