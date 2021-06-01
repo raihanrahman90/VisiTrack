@@ -164,7 +164,7 @@ def bicycle_detect(image,classes,score,boxes):
             center=(int(((xmin+xmax)/2)*w),int(((ymin+ymax)/2)*h))
             cv2.circle(image,center,10,(0,0,255),-1)
             
-            file_name=os.path.join('gs://visitrack_storage/Output_Folder',dt_string+'.jpg') 					##image output directory (cloudstorage)
+            file_name=os.path.join('/output_image',dt_string+'.jpg') 					##image output directory (cloudstorage)
             cv2.imwrite(file_name,image)
 
 def hitungJarak(data1,data2):
@@ -180,7 +180,7 @@ def getJumlahOrang():
 def runProgram():
     id=0
     detection_model = load_model()
-    video=cv2.VideoCapture(r'https://github.com/nblakbar10/VisitrackDataset/blob/main/pedestrians.mp4?raw=true')	##video input test
+    video=cv2.VideoCapture(r'gs://visitrack_storage/pedestrians.mp4')	##video input test
     DetectedBefore = np.array([])
     global frame
     while(True):
@@ -213,5 +213,5 @@ def runProgram():
             cv2.imshow('LIVE',img)
             k=cv2.waitKey(1)
         except:
-            video = cv2.VideoCapture(r'https://github.com/nblakbar10/VisitrackDataset/blob/main/pedestrians.mp4?raw=true')
+            video = cv2.VideoCapture(r'gs://visitrack_storage/pedestrians.mp4')
 
