@@ -57,16 +57,23 @@ def getPelanggaran():
     pelanggaran = []
     data = db.child('pelanggaran').get()
     for item in data.each():
-        pelanggaran.append({"id":item.key(), "pesan":item.val()['pelanggaran'], "gambar":item.val()['gambar'], "kamera":item.val()['kamera']})
+        pelanggaran.append({"id":item.key(), "pesan":item.val()['pelanggaran'], "gambar":item.val()['gambar'], "kamera":item.val()['kamera'], "tanggal":item.val()["tanggal"], "status":item.val()["status"]})
     return jsonify({"success":"true", "pelanggaran":pelanggaran})
 
-@app.route("/pelanggaran/<id>")
+@app.route("/pelanggaran/<id>", methods=["POST","GET"])
 def getPelanggaranId(id):
-    data = db.child('pelanggaran').get()
-    for item in data.each():
-        if item.key() == id:
-            return jsonify({"pesan":item.val()['pelanggaran'], "gambar":item.val()['gambar']})
-
+    if request.method == 'GET':
+        data = db.child('pelanggaran').get()
+        print(id)
+        for item in data.each():
+            if item.key() == id:
+                print(item.key())
+                return jsonify({"pesan":item.val()['pelanggaran'], "gambar":item.val()['gambar'], "kamera":item.val()['kamera'], "tanggal":item.val()["tanggal"], "status":item.val()["status"]})
+        return jsonify({"success":False})
+    if request.method == 'POST':
+        db.child("pelanggaran").child(id).update({"status":request.json["status"]})
+        return jsonify({"success":True})
+ 
 @app.route("/gambar/<namafile>")
 def gambar(namafile):
     return send_file(namafile, mimetype='image/gif')
@@ -84,3 +91,4 @@ def logout():
             success = "true"
             db.child("users").child(item.key()).update({"token":""})
             return jsonify({"success":success})
+    return jsonify({"success":False})
