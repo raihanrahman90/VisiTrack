@@ -5,6 +5,7 @@ import com.visitrack.core.data.remote.model.login.LoginResponse
 import com.visitrack.core.data.remote.model.register.RegisterPost
 import com.visitrack.core.data.remote.model.register.RegisterResponse
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
@@ -13,4 +14,7 @@ interface ApiService {
 
     @POST("register")
     suspend fun register(@Body registerPost: RegisterPost): RegisterResponse
+
+    //@GET("statistik")
+    //suspend fun getStatistics():
 }
