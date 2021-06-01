@@ -1,31 +1,23 @@
 import os
 import time
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_file
 from threading import Thread
+from tasks import runProgram, getJumlahOrang
 import pyrebase
 import jwt
+from data import getConnection
 key = "secret"
-config = {
-  "apiKey": "AIzaSyCg7Y1AltObqbFDYcbyyKoiwqIjW-HyPDM",
-  "authDomain": "isitrack-6f31e.firebaseapp.com",
-  "databaseURL": "https://visitrack-6f31e-default-rtdb.firebaseio.com/",
-  "storageBucket": "visitrack-6f31e.appspot.com"
-}
-firebase = pyrebase.initialize_app(config)
-# Get a reference to the auth service
-auth = firebase.auth()
-
-# Log the user in
-user = auth.sign_in_with_email_and_password("m1161483@bangkit.academy", "raihan")
-
-# Log the user in anonymously
-user = auth.sign_in_anonymous()
-
-# Get a reference to the database service
-db = firebase.database()
 
 app = Flask(__name__)
 app.secret_key = os.urandom(42)
+
+thread = Thread(target=runProgram, args=())
+thread.daemon = True
+thread.start()
+db = getConnection()
+@app.route("/")
+def percobaan():
+    return "A"
 @app.route("/login", methods=['POST', 'GET'])
 def index():
     username = request.json['username']
@@ -50,3 +42,27 @@ def daftar():
     data = {"username":username, "password":password}
     db.child('users').push(data)
     return jsonify({"success":"true"})
+
+@app.route("/statistik")
+def statistik():
+    return jsonify({'jumlah_orang': str(getJumlahOrang()),
+                    'started': True})
+
+@app.route("/pelanggaran")
+def getPelanggaran():
+    pelanggaran = []
+    data = db.child('pelanggaran').get()
+    for item in data.each():
+        pelanggaran.append({"id":item.key(), "pesan":item.val()['pelanggaran'], "gambar":item.val()['gambar'], "kamera":item.val()['kamera']})
+    return jsonify({"success":"true", "pelanggaran":pelanggaran})
+
+@app.route("/pelanggaran/<id>")
+def getPelanggaranId(id):
+    data = db.child('pelanggaran').get()
+    for item in data.each():
+        if item.key() == id:
+            return jsonify({"pesan":item.val()['pelanggaran'], "gambar":item.val()['gambar']})
+
+@app.route("/gambar/<namafile>")
+def gambar(namafile):
+    return send_file(namafile, mimetype='image/gif')
