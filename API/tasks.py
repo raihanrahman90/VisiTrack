@@ -26,7 +26,7 @@ tf.gfile = tf.io.gfile
 db = getConnection()
 model_mask = keras.models.load_model('../../Mask_detection.h5')
 frame = 0
-lastFrame =0 
+lastFrame =-30
 PATH_TO_LABELS = './modelHuman.pbtxt'
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
 category_index[42] = {"id":42, "name":"alert"}
@@ -85,7 +85,7 @@ def pelanggaran(text, img):
     nama = time.time()
     im = Image.fromarray(img)
     im.save(str(nama)+".jpg")
-    db.child("pelanggaran").push({"pelanggaran":text, "gambar":str(nama)+".jpg", "kamera":"20210530_163856"})
+    db.child("pelanggaran").push({"pelanggaran":text, "gambar":str(nama)+".jpg", "kamera":"20210530_163856", "tanggal":nama, "status":0})
     kirimNotif(text,text)
 
 
@@ -116,7 +116,7 @@ def show_inference(model, image_path):
                                              ceil((output_dict['detection_boxes'][i][3]*lebar)-(output_dict['detection_boxes'][i][1]*lebar))
                                              )
         masker,foto = maskPredict(potong)
-        if( masker == 0 and lastFrame-frame>30):
+        if( masker == 0 and frame-lastFrame>30):
             lastFrame = frame
             pelanggaran("Tidak Menggunakan Masker", image_np)
         for j in listIndexOfDetected:

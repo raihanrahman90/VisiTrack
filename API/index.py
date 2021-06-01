@@ -45,7 +45,11 @@ def daftar():
 
 @app.route("/statistik")
 def statistik():
+    data = db.child('pelanggaran').get()
+    print(type(data))
     return jsonify({'jumlah_orang': str(getJumlahOrang()),
+                    'jumlah_kamera': 1,
+                    'jumlah_pelanggaran':len(data.val()),
                     'started': True})
 
 @app.route("/pelanggaran")
@@ -66,3 +70,17 @@ def getPelanggaranId(id):
 @app.route("/gambar/<namafile>")
 def gambar(namafile):
     return send_file(namafile, mimetype='image/gif')
+
+@app.route("/logout", methods=['POST'])
+def logout():
+    token = request.json['token']
+    token = jwt.decode(token, key, algorithms=["HS256"])
+    username = token["username"]
+    password = token["password"]
+    data = db.child("users").get()
+    for item in data.each():
+        data = item.val()
+        if(data['username']==username and data['password']==password):
+            success = "true"
+            db.child("users").child(item.key()).update({"token":""})
+            return jsonify({"success":success})
