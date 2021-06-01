@@ -1,7 +1,10 @@
 package com.visitrack.list
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +16,9 @@ import com.visitrack.core.domain.model.Camera
 import com.visitrack.core.domain.model.Statistics
 import com.visitrack.core.ui.CameraAdapter
 import com.visitrack.core.ui.NotificationAdapter
+import com.visitrack.core.utils.TokenPreference
 import com.visitrack.databinding.ActivityMainBinding
+import com.visitrack.start.ui.LoginActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModel()
     private lateinit var notificationAdapter: NotificationAdapter
     private lateinit var cameraAdapter: CameraAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -35,6 +41,25 @@ class MainActivity : AppCompatActivity() {
         //getNotification()
         //getCamera()
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_logout -> {
+                val tokenPreferences = TokenPreference(this)
+                tokenPreferences.setToken("")
+                startActivity(Intent(this, LoginActivity::class.java))
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
     }
 
     /*private fun getViolation(){
@@ -114,7 +139,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpToolbarVisitrack(){
         setSupportActionBar(binding.visitrackToolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun setUpToolbarTitleVisitrack(title: String){

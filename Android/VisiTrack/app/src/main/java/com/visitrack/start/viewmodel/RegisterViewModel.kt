@@ -7,6 +7,6 @@ import com.visitrack.core.domain.usecase.UseCase
 class RegisterViewModel (private val useCase: UseCase) : ViewModel() {
 
     fun getRegister(user: User) {
-        useCase.register(user)
+        //useCase.register(user)
     }
 }
