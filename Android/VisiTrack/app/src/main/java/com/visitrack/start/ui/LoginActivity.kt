@@ -56,13 +56,14 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 val tokenPreference = TokenPreference(this)
 
                 loginViewModel.getLogin(username, passwords, token).observe(this, { login ->
+
                     if (login.data?.success == "true"){
                         tokenPreference.setToken(login.data!!.token!!)
                         startActivity(Intent(this, MainActivity::class.java))
-                    } else {
-                        Toast.makeText(this, R.string.login_error, Toast.LENGTH_SHORT).show()
+                    } else if (login.data?.success == "false"){
                         binding.contentLogin.edtUsername.setText("")
                         binding.contentLogin.edtPassword.setText("")
+                        Toast.makeText(this, R.string.login_error, Toast.LENGTH_SHORT).show()
                     }
                 })
             }

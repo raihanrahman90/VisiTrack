@@ -1,9 +1,11 @@
 package com.visitrack.core.data
 
 import com.visitrack.core.data.remote.RemoteDataSource
-import com.visitrack.core.data.remote.model.login.LoginPost
+import com.visitrack.core.data.remote.model.login.LoginBody
 import com.visitrack.core.data.remote.model.login.LoginResponse
-import com.visitrack.core.data.remote.model.register.RegisterPost
+import com.visitrack.core.data.remote.model.logout.LogoutBody
+import com.visitrack.core.data.remote.model.logout.LogoutResponse
+import com.visitrack.core.data.remote.model.register.RegisterBody
 import com.visitrack.core.data.remote.model.register.RegisterResponse
 import com.visitrack.core.data.remote.network.ApiResponse
 import com.visitrack.core.domain.model.Camera
@@ -23,11 +25,24 @@ class Repository(private val remoteDataSource: RemoteDataSource): IRepository {
             }
 
             override suspend fun createCall(): Flow<ApiResponse<LoginResponse>> {
-                val data = LoginPost(username, password, token)
+                val data = LoginBody(username, password, token)
                 return remoteDataSource.login(data)
             }
 
         }.asFlow()
+
+    override fun logout(token: String): Flow<Resource<User>> =
+        object : NetworkBoundResource<User, LogoutResponse>() {
+            override suspend fun load(data: LogoutResponse): Flow<User> {
+                return listOf(DataMapper.mapLogoutResponseToUser(data)).asFlow()
+            }
+
+            override suspend fun createCall(): Flow<ApiResponse<LogoutResponse>> {
+                val data = LogoutBody(token)
+                return remoteDataSource.logout(data)
+            }
+        }.asFlow()
+
 
     override fun register(username: String, password: String): Flow<Resource<User>> =
         object : NetworkBoundResource<User, RegisterResponse>() {
@@ -36,7 +51,7 @@ class Repository(private val remoteDataSource: RemoteDataSource): IRepository {
             }
 
             override suspend fun createCall(): Flow<ApiResponse<RegisterResponse>> {
-                val data = RegisterPost(username, password)
+                val data = RegisterBody(username, password)
                 return remoteDataSource.register(data)
             }
 

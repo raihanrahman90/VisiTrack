@@ -2,7 +2,7 @@ package com.visitrack.core.data.remote.model.login
 
 import com.google.gson.annotations.SerializedName
 
-data class LoginPost(
+data class LoginBody(
 
 	@field:SerializedName("username")
 	val username: String? = null,

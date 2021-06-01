@@ -13,6 +13,10 @@ class Interactor(private val repository: IRepository): UseCase {
         return repository.login(username, password, token)
     }
 
+    override fun logout(token: String): Flow<Resource<User>> {
+        return repository.logout(token)
+    }
+
     override fun register(username: String, password: String): Flow<Resource<User>> {
         return repository.register(username, password)
     }
