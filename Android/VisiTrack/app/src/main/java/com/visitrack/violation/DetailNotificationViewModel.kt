@@ -11,10 +11,10 @@ import kotlinx.coroutines.flow.Flow
 
 class DetailNotificationViewModel(private val useCase: UseCase) : ViewModel() {
 
-    fun getNotificationDetail(id: Int): LiveData<Resource<Violation>> =
+    fun getNotificationDetail(id: String): LiveData<Resource<Violation>> =
         useCase.getViolationDetail(id).asLiveData()
 
-    fun getUpdateViolationNotification (status: String) {
-        useCase.updateViolation(status)
+    fun getUpdateViolationNotification (id: String, status: Int) {
+        useCase.updateViolation(id, status)
     }
 }

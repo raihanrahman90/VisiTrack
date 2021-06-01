@@ -39,10 +39,12 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 val tokenPreference = TokenPreference(this)
 
                 registerViewModel.getRegister(username, passwords). observe(this,{ register->
-                    if (register.data?.success == "true"){
+                    if (register.data?.success == true){
                         tokenPreference.getToken()
-                        startActivity(Intent(this, LoginActivity::class.java))
-                    } else if (register.data?.success == "false"){
+                        val intent = Intent(this, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else if (register.data?.success == false){
                         Toast.makeText(this, R.string.register_error, Toast.LENGTH_SHORT).show()
                         binding.contentRegister.edtUsername.setText("")
                         binding.contentRegister.edtPassword.setText("")

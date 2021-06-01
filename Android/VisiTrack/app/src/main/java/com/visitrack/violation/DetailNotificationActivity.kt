@@ -3,11 +3,9 @@ package com.visitrack.violation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.visitrack.R
 import com.visitrack.core.data.Resource
-import com.visitrack.core.domain.model.Camera
 import com.visitrack.core.domain.model.Violation
 import com.visitrack.databinding.ActivityDetailNotificationBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -27,19 +25,19 @@ class DetailNotificationActivity : AppCompatActivity() {
         setUpToolbarVisitrack()
         setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_detail_visitrack)))
 
-//        binding.btnFinished.setOnClickListener{
-//            viewModel.getUpdateViolationNotification()
-//        }
-//
-//        binding.btnError.setOnClickListener{
-//            viewModel.getUpdateViolationNotification()
-//
-//        }
+        binding.btnFinished.setOnClickListener{
+            //viewModel.getUpdateViolationNotification(id, 1)
+        }
+
+        binding.btnError.setOnClickListener{
+            //viewModel.getUpdateViolationNotification(id, 2)
+
+        }
 
         //getDetail(id)
     }
 
-    private fun getDetail (id: Int){
+    private fun getDetail (id: String){
         viewModel.getNotificationDetail(id).observe(this, { violation ->
             when(violation){
                 is Resource.Loading -> {
@@ -47,18 +45,21 @@ class DetailNotificationActivity : AppCompatActivity() {
                 }
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    val violation = violation.data
+                    val data = violation.data
                     Glide.with(this@DetailNotificationActivity)
-                        .load((violation?.imageUrl))
+                        .load((data?.imageUrl))
                         .into(binding.ivNotification)
                     with(binding) {
-                        binding.tvId.text = violation?.idViolation.toString()
-                        binding.tvType.text = violation?.typeViolation
-                        binding.tvCamera.text = violation?.camera.toString()
-                        binding.tvDate.text = violation?.dateViolation
-                        binding.tvTime.text = violation?.timeViolation
-                        binding.tvDesc.text = violation?.descViolation
-                        binding.tvStatus.text = violation?.statusViolation
+                        tvId.text = data?.idViolation.toString()
+                        tvType.text = data?.typeViolation
+                        tvCamera.text = data?.camera.toString()
+                        tvDate.text = data?.dateViolation
+                        tvTime.text = data?.timeViolation
+                        when(data?.statusViolation) {
+                            0 -> tvStatus.text = getString(R.string.status_default)
+                            1 -> tvStatus.text = getString(R.string.status_done)
+                            2 -> tvStatus.text = getString(R.string.status_false)
+                        }
                     }
                 }
                 is Resource.Error ->{

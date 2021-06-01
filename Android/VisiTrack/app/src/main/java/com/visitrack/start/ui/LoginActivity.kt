@@ -26,17 +26,13 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
 
         binding.contentLogin.btnLogin.setOnClickListener(this)
+        binding.contentLogin.registerHere.setOnClickListener(this)
 
         //Subscribe Push Notification
         FirebaseMessaging.getInstance().subscribeToTopic("news")
         FirebaseMessaging.getInstance().token.addOnSuccessListener { deviceToken ->
             Log.d(MainActivity::class.java.simpleName, "Refreshed token: $deviceToken")
             token = deviceToken
-        }
-
-        binding.contentLogin.registerHere.setOnClickListener{
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
         }
     }
 
@@ -52,20 +48,24 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     binding.contentLogin.edtPassword.error = "Please Enter Your Password"
                     return
                 }
-
+                //LOGIN CODE
                 val tokenPreference = TokenPreference(this)
-
                 loginViewModel.getLogin(username, passwords, token).observe(this, { login ->
-
-                    if (login.data?.success == "true"){
+                    if (login.data?.success == true){
                         tokenPreference.setToken(login.data!!.token!!)
-                        startActivity(Intent(this, MainActivity::class.java))
-                    } else if (login.data?.success == "false"){
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else if (login.data?.success == false){
                         binding.contentLogin.edtUsername.setText("")
                         binding.contentLogin.edtPassword.setText("")
                         Toast.makeText(this, R.string.login_error, Toast.LENGTH_SHORT).show()
                     }
                 })
+            }
+            R.id.register_here -> {
+                val intent = Intent(this, RegisterActivity::class.java)
+                startActivity(intent)
             }
         }
     }

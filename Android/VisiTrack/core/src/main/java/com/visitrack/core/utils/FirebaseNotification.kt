@@ -31,9 +31,9 @@ class FirebaseNotification: FirebaseMessagingService() {
         val channelName = getString(R.string.notification_channel_name)
 
         //ADD INTENT
-        /*val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, Class.forName("com.visitrack.app.MainActivity"))
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)*/
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
 
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this,channelId)
@@ -42,7 +42,7 @@ class FirebaseNotification: FirebaseMessagingService() {
             .setContentText(remoteMessage.body)
             .setAutoCancel(true)
             .setSound(defaultSoundUri)
-            //.setContentIntent(pendingIntent)
+            .setContentIntent(pendingIntent)
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

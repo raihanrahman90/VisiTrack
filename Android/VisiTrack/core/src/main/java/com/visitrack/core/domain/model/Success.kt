@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class User(
-    val success: String,
+data class Success(
+    val success: Boolean,
     val token: String?
 ): Parcelable

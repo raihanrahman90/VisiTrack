@@ -3,21 +3,21 @@ package com.visitrack.core.domain.usecase
 import com.visitrack.core.data.Resource
 import com.visitrack.core.domain.model.Camera
 import com.visitrack.core.domain.model.Statistics
-import com.visitrack.core.domain.model.User
+import com.visitrack.core.domain.model.Success
 import com.visitrack.core.domain.model.Violation
 import com.visitrack.core.domain.repository.IRepository
 import kotlinx.coroutines.flow.Flow
 
 class Interactor(private val repository: IRepository): UseCase {
-    override fun login(username: String, password: String, token: String): Flow<Resource<User>> {
+    override fun login(username: String, password: String, token: String): Flow<Resource<Success>> {
         return repository.login(username, password, token)
     }
 
-    override fun logout(token: String): Flow<Resource<User>> {
+    override fun logout(token: String): Flow<Resource<Success>> {
         return repository.logout(token)
     }
 
-    override fun register(username: String, password: String): Flow<Resource<User>> {
+    override fun register(username: String, password: String): Flow<Resource<Success>> {
         return repository.register(username, password)
     }
 
@@ -33,16 +33,16 @@ class Interactor(private val repository: IRepository): UseCase {
         return repository.getCameraList()
     }
 
-    override fun getViolationDetail(id: Int): Flow<Resource<Violation>> {
+    override fun getViolationDetail(id: String): Flow<Resource<Violation>> {
         return repository.getViolationDetail(id)
     }
 
-    override fun getCameraDetail(id: Int): Flow<Resource<Camera>> {
+    override fun getCameraDetail(id: String): Flow<Resource<Camera>> {
         return repository.getCameraDetail(id)
     }
 
-    override fun updateViolation(status: String) {
-        repository.updateViolation(status)
+    override fun updateViolation(id: String, status: Int): Flow<Resource<Success>> {
+        return repository.updateViolation(id, status)
     }
 
 }

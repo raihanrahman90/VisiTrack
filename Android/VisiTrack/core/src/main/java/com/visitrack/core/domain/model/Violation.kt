@@ -5,12 +5,11 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Violation(
-    val idViolation: Int,
+    val idViolation: String?,
     val typeViolation: String,
-    val camera: Camera,
+    val camera: String,
     val dateViolation: String,
     val timeViolation: String,
-    val descViolation: String,
-    val statusViolation: String,
+    val statusViolation: Int,
     val imageUrl: String
 ): Parcelable

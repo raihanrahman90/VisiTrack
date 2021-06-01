@@ -9,7 +9,7 @@ import com.visitrack.core.domain.usecase.UseCase
 
 class DetailCameraViewModel(private val useCase: UseCase) : ViewModel() {
 
-    fun getDetailCamera(id: Int): LiveData<Resource<Camera>> =
+    fun getDetailCamera(id: String): LiveData<Resource<Camera>> =
         useCase.getCameraDetail(id).asLiveData()
 
 }

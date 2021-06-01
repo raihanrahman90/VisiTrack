@@ -28,7 +28,7 @@ class DetailCameraActivity : AppCompatActivity() {
 
     }
 
-    private fun getDetail (id: Int){
+    private fun getDetail (id: String){
         viewModel.getDetailCamera(id).observe(this, { camera ->
             when(camera){
                 is Resource.Loading -> {
@@ -36,16 +36,16 @@ class DetailCameraActivity : AppCompatActivity() {
                 }
                 is Resource.Success -> {
                     binding.progressBar.visibility= View.GONE
-                    val camera = camera.data
+                    val data = camera.data
                     Glide.with(this@DetailCameraActivity)
-                        .load((camera?.imageUrl))
+                        .load((data?.imageUrl))
                         .into(binding.ivCamera)
                     with(binding) {
-                        binding.tvId.text = camera?.idCamera.toString()
-                        binding.tvName.text = camera?.nameCamera
-                        binding.tvDesc.text = camera?.descCamera
-                        binding.tvVisitorCount.text = camera?.visitorCount.toString()
-                        binding.tvViolationCount.text = camera?.violationCount.toString()
+                        tvId.text = data?.idCamera.toString()
+                        tvName.text = data?.nameCamera
+                        tvDesc.text = data?.descCamera
+                        tvVisitorCount.text = data?.visitorCount.toString()
+                        tvViolationCount.text = data?.violationCount.toString()
                     }
                 }
                 is Resource.Error ->{

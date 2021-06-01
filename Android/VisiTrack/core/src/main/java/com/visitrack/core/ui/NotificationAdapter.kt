@@ -22,7 +22,7 @@ class NotificationAdapter: RecyclerView.Adapter<NotificationAdapter.ListViewHold
         private val binding = RvItemNotificationBinding.bind(view)
         fun bind(data: Violation) {
             with(binding) {
-                tvViolation.text = itemView.context.getString(R.string.violation_text, data.typeViolation, data.camera.nameCamera)
+                tvViolation.text = itemView.context.getString(R.string.violation_text, data.typeViolation, data.camera)
                 tvTimestamp.text = data.timeViolation
             }
         }

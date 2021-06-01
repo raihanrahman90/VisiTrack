@@ -1,24 +1,38 @@
 package com.visitrack.core.data.remote.network
 
-import com.visitrack.core.data.remote.model.logout.LogoutBody
+import com.visitrack.core.data.remote.model.*
 import com.visitrack.core.data.remote.model.login.LoginBody
 import com.visitrack.core.data.remote.model.login.LoginResponse
-import com.visitrack.core.data.remote.model.logout.LogoutResponse
-import com.visitrack.core.data.remote.model.register.RegisterBody
-import com.visitrack.core.data.remote.model.register.RegisterResponse
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
     @POST("login")
-    suspend fun login(@Body loginBody: LoginBody): LoginResponse
+    suspend fun postLogin(@Body loginBody: LoginBody): LoginResponse
 
     @POST("logout")
-    suspend fun logout(@Body logoutBody: LogoutBody): LogoutResponse
+    suspend fun postLogout(@Body logoutBody: LogoutBody): SuccessResponse
 
     @POST("register")
-    suspend fun register(@Body registerBody: RegisterBody): RegisterResponse
+    suspend fun postRegister(@Body registerBody: RegisterBody): SuccessResponse
 
-    //@GET("statistik")
-    //suspend fun getStatistics():
+    @GET("statistik")
+    suspend fun getStatistics(): StatisticsResponse
+
+    @GET("pelanggaran")
+    suspend fun getNotificationList(): ViolationResponse
+
+    @GET("pelanggaran/{id}")
+    suspend fun getViolationDetail(@Path("id")id: String): ViolationItem
+
+    @GET("kamera")
+    suspend fun getCameraList(): CameraResponse
+
+    @GET("kamera/{id}")
+    suspend fun getCameraDetail(@Path("id")id: String): CameraItem
+
+    @POST("pelanggaran/{id}")
+    suspend fun updateViolation(@Path("id")id: String, @Body violationBody: ViolationBody): SuccessResponse
 }

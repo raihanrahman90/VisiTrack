@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.visitrack">
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -11,7 +12,24 @@
         android:roundIcon="@drawable/visitrack_circle"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
-        android:theme="@style/Theme.VisiTrack">
+        android:theme="@style/Theme.VisiTrack"
+        tools:targetApi="m">
+
+        <service
+            android:name=".core.utils.FirebaseNotification"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@android:color/holo_orange_dark" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/notification_channel_id"/>
+
         <activity android:name=".settings.SettingsActivity" />
         <activity android:name=".start.ui.RegisterActivity" />
         <activity android:name=".start.ui.LoginActivity" />

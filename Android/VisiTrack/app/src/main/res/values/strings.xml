@@ -48,7 +48,7 @@
     <string name="logout">Logout</string>
     <string name="language">Language</string>
     <string name="push_notification">Push Notification</string>
-    <string name="register_here" translatable="false">Don\'t have account? Register here</string>
+    <string name="register_here">Don\'t have account? Register here</string>
 
     //toolbar
     <string name="toolbar_visitrack">Visitrack</string>
@@ -56,4 +56,7 @@
     <string name="toolbar_camera_visitrack">Detail Camera</string>
     <string name="login_error">User not found</string>
     <string name="register_error">Can\'t register, please try again</string>
+    <string name="status_default">No respond yet</string>
+    <string name="status_done">Responded</string>
+    <string name="status_false">False Detection</string>
 </resources>
