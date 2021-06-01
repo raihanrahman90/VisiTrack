@@ -11,12 +11,12 @@ import com.visitrack.core.domain.usecase.UseCase
 
 class MainViewModel (private val useCase: UseCase): ViewModel() {
 
-    fun getViolationStatistic() : LiveData<Resource<Statistics>> =
-        useCase.getStatistics().asLiveData()
+    //fun getViolationStatistic() : LiveData<Resource<Statistics>> =
+        //useCase.getStatistics().asLiveData()
 
-    fun getListNotification() : LiveData<Resource<List<Violation>>> =
-        useCase.getNotificationList().asLiveData()
+    //fun getListNotification() : LiveData<Resource<List<Violation>>> =
+        //useCase.getNotificationList().asLiveData()
 
-    fun getListCamera() : LiveData<Resource<List<Camera>>> =
-        useCase.getCameraList().asLiveData()
+    //fun getListCamera() : LiveData<Resource<List<Camera>>> =
+        //useCase.getCameraList().asLiveData()
 }

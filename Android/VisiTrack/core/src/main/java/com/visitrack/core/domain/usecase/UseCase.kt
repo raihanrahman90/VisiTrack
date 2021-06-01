@@ -8,8 +8,8 @@ import com.visitrack.core.domain.model.Violation
 import kotlinx.coroutines.flow.Flow
 
 interface UseCase {
-    fun login(): Flow<Resource<User>>
-    fun register(user: User)
+    fun login(username: String, password: String, token: String): Flow<Resource<User>>
+    fun register(username: String, password: String): Flow<Resource<User>>
     fun getStatistics(): Flow<Resource<Statistics>>
     fun getNotificationList(): Flow<Resource<List<Violation>>>
     fun getCameraList(): Flow<Resource<List<Camera>>>

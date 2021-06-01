@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_error">Pengguna tidak ditemukan</string>
+    <string name="register_error">Gagal mendaftar, silahkan mencoba lagi</string>
+</resources>

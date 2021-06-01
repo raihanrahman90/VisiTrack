@@ -25,16 +25,6 @@ class SplashScreenActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        //Subscribe Push Notification
-        FirebaseMessaging.getInstance().subscribeToTopic("news")
-        FirebaseMessaging.getInstance().token.addOnSuccessListener { deviceToken ->
-            Log.d(MainActivity::class.java.simpleName, "Refreshed token: $deviceToken")
-            Toast.makeText(this, "Refreshed token: $deviceToken", Toast.LENGTH_LONG).show()
-            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-            val token: ClipData = ClipData.newPlainText("token", deviceToken)
-            clipboard.setPrimaryClip(token)
-        }
-
         //For Login Preference
         val tokenPreference = TokenPreference(this)
 

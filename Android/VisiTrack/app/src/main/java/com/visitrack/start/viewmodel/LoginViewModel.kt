@@ -9,7 +9,7 @@ import com.visitrack.core.domain.usecase.UseCase
 
 class LoginViewModel(private val useCase: UseCase) : ViewModel() {
 
-    fun getLogin() : LiveData<Resource<User>> =
-        useCase.login().asLiveData()
+    fun getLogin(username: String, password: String, token: String) : LiveData<Resource<User>> =
+        useCase.login(username, password, token).asLiveData()
 
 }

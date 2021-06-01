@@ -12,12 +12,13 @@ import com.visitrack.core.domain.model.Violation
 import com.visitrack.databinding.ActivityDetailNotificationBinding
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
+import org.koin.android.viewmodel.ext.android.viewModel
 
 @ExperimentalCoroutinesApi
 @FlowPreview
 class DetailNotificationActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: DetailNotificationViewModel
+    private val viewModel: DetailNotificationViewModel by viewModel()
     private lateinit var binding: ActivityDetailNotificationBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +26,6 @@ class DetailNotificationActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpToolbarVisitrack()
         setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_detail_visitrack)))
-
-        viewModel = ViewModelProvider(
-            this, ViewModelProvider.NewInstanceFactory()
-        ).get(DetailNotificationViewModel::class.java)
-
 
 //        binding.btnFinished.setOnClickListener{
 //            viewModel.getUpdateViolationNotification()

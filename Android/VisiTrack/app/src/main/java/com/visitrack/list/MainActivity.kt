@@ -1,7 +1,10 @@
 package com.visitrack.list
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,13 +16,17 @@ import com.visitrack.core.domain.model.Camera
 import com.visitrack.core.domain.model.Statistics
 import com.visitrack.core.ui.CameraAdapter
 import com.visitrack.core.ui.NotificationAdapter
+import com.visitrack.core.utils.TokenPreference
 import com.visitrack.databinding.ActivityMainBinding
+import com.visitrack.start.ui.LoginActivity
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-    private lateinit var viewModel: MainViewModel
+    private val viewModel: MainViewModel by viewModel()
     private lateinit var notificationAdapter: NotificationAdapter
     private lateinit var cameraAdapter: CameraAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -27,20 +34,35 @@ class MainActivity : AppCompatActivity() {
         setUpToolbarVisitrack()
         setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_visitrack)))
 
-        viewModel = ViewModelProvider(
-            this, ViewModelProvider.NewInstanceFactory()
-        ).get(MainViewModel::class.java)
-
         notificationAdapter = NotificationAdapter()
         cameraAdapter= CameraAdapter()
 
-        getViolation()
-        getNotification()
-        getCamera()
+        //getViolation()
+        //getNotification()
+        //getCamera()
 
     }
 
-    private fun getViolation(){
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_logout -> {
+                val tokenPreferences = TokenPreference(this)
+                tokenPreferences.setToken("")
+                startActivity(Intent(this, LoginActivity::class.java))
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
+    }
+
+    /*private fun getViolation(){
         viewModel.getViolationStatistic().observe(this, { statistic ->
             when(statistic){
                 is Resource.Loading ->{
@@ -63,9 +85,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-    }
+    }*/
 
-    private fun getNotification(){
+    /*private fun getNotification(){
         viewModel.getListNotification().observe(this, { notification ->
             when (notification){
                 is Resource.Loading ->{
@@ -88,9 +110,9 @@ class MainActivity : AppCompatActivity() {
             setHasFixedSize(true)
             adapter = notificationAdapter
         }
-    }
+    }*/
 
-    private fun getCamera(){
+    /*private fun getCamera(){
         viewModel.getListCamera().observe(this, { camera ->
             when (camera){
                 is Resource.Loading ->{
@@ -113,10 +135,11 @@ class MainActivity : AppCompatActivity() {
             setHasFixedSize(true)
             adapter = cameraAdapter
         }
-    }
+    }*/
+
     private fun setUpToolbarVisitrack(){
         setSupportActionBar(binding.visitrackToolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun setUpToolbarTitleVisitrack(title: String){
