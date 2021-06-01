@@ -78,7 +78,6 @@ def getPelanggaranId(id):
 def gambar(namafile):
     return send_file(namafile, mimetype='image/gif')
 
-<<<<<<< HEAD
 @app.route("/logout", methods=['POST'])
 def logout():
     token = request.json['token']
@@ -93,7 +92,5 @@ def logout():
             db.child("users").child(item.key()).update({"token":""})
             return jsonify({"success":success})
     return jsonify({"success":False})
-=======
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
->>>>>>> ed3a2eac28dba31b986c941e70f54368b90e02f1
