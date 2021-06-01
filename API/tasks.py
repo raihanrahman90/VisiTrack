@@ -24,15 +24,10 @@ keras = tf.keras
 utils_ops.tf = tf.compat.v1
 tf.gfile = tf.io.gfile
 db = getConnection()
-model_mask = tf.saved_model.load('gs://visitrack_storage/Mask_Model')
+model_mask = keras.models.load_model('../../Mask_detection.h5')
 frame = 0
-<<<<<<< HEAD
 lastFrame =-30
 PATH_TO_LABELS = './modelHuman.pbtxt'
-=======
-lastFrame =0 
-PATH_TO_LABELS = 'gs://visitrack_storage/Mask_Model/modelHuman.pbtxt'
->>>>>>> ed3a2eac28dba31b986c941e70f54368b90e02f1
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
 category_index[42] = {"id":42, "name":"alert"}
 PATH_TO_TEST_IMAGES_DIR = pathlib.Path('object_detection/test_images')
@@ -41,7 +36,7 @@ TEST_IMAGE_PATHS
 
 
 def load_model():
-  model_dir = r"gs://visitrack_storage/SavedModel" 											##load model from cloudstorage(bucket:visitrack_storage)
+  model_dir = r"C:\Users\Asus\.keras\datasets\modelHuman-master\saved_model" 											##load model from cloudstorage(bucket:visitrack_storage)
   model = tf.saved_model.load(str(model_dir))
   model = model.signatures['serving_default']
   return model
@@ -185,7 +180,7 @@ def getJumlahOrang():
 def runProgram():
     id=0
     detection_model = load_model()
-    video=cv2.VideoCapture(r'gs://visitrack_storage/pedestrians.mp4')	##video input test
+    video=cv2.VideoCapture(r'E:/TEST/20210530_163856.mp4')	##video input test
     DetectedBefore = np.array([])
     global frame
     while(True):
@@ -215,8 +210,6 @@ def runProgram():
                                 if(DetectedBefore[j]["tidak_terdetek"])>5:
                                     listDrop.append(j)
                     DetectedBefore = np.delete(DetectedBefore, listDrop)
-            cv2.imshow('LIVE',img)
-            k=cv2.waitKey(1)
-        except:
-            video = cv2.VideoCapture(r'gs://visitrack_storage/pedestrians.mp4')
 
+        except:
+            video=cv2.VideoCapture(r'E:/TEST/20210530_163856.mp4')
