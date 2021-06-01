@@ -15,6 +15,9 @@ thread = Thread(target=runProgram, args=())
 thread.daemon = True
 thread.start()
 db = getConnection()
+token= []
+def getToken():
+    return token
 @app.route("/")
 def percobaan():
     return "nabil"
@@ -31,6 +34,7 @@ def index():
             success = "true"
             db.child("users").child(item.key()).update({"token":token})
             encoded = jwt.encode({"username": username, "password":password}, key, algorithm="HS256")
+            getToken()
             return jsonify({"success":success, "token":encoded})
     return jsonify({"success":"false"})
 
@@ -90,6 +94,7 @@ def logout():
         if(data['username']==username and data['password']==password):
             success = "true"
             db.child("users").child(item.key()).update({"token":""})
+            getToken()
             return jsonify({"success":success})
     return jsonify({"success":False})
 if __name__ == '__main__':
