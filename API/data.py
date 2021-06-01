@@ -22,6 +22,8 @@ def getToken():
     dataUser = db.child("users").get()
     for item in dataUser.each():
         try:
+            if(item.val()["token"]==""):
+                continue
             token.append(item.val()["token"])
         except:
             continue

@@ -31,12 +31,11 @@ def index():
     for item in data.each():
         data = item.val()
         if(data['username']==username and data['password']==password):
-            success = "true"
             db.child("users").child(item.key()).update({"token":token})
             encoded = jwt.encode({"username": username, "password":password}, key, algorithm="HS256")
             getToken()
-            return jsonify({"success":success, "token":encoded})
-    return jsonify({"success":"false"})
+            return jsonify({"success":True, "token":encoded})
+    return jsonify({"success":False})
 
 
 @app.route("/register", methods=['POST'])
@@ -45,7 +44,7 @@ def daftar():
     password = request.json['password']
     data = {"username":username, "password":password}
     db.child('users').push(data)
-    return jsonify({"success":"true"})
+    return jsonify({"success":True})
 
 @app.route("/statistik")
 def statistik():
@@ -62,7 +61,7 @@ def getPelanggaran():
     data = db.child('pelanggaran').get()
     for item in data.each():
         pelanggaran.append({"id":item.key(), "pesan":item.val()['pelanggaran'], "gambar":item.val()['gambar'], "kamera":item.val()['kamera'], "tanggal":item.val()["tanggal"], "status":item.val()["status"]})
-    return jsonify({"success":"true", "pelanggaran":pelanggaran})
+    return jsonify({"success":True, "pelanggaran":pelanggaran})
 
 @app.route("/pelanggaran/<id>", methods=["POST","GET"])
 def getPelanggaranId(id):
@@ -92,10 +91,9 @@ def logout():
     for item in data.each():
         data = item.val()
         if(data['username']==username and data['password']==password):
-            success = "true"
             db.child("users").child(item.key()).update({"token":""})
             getToken()
-            return jsonify({"success":success})
+            return jsonify({"success":True})
     return jsonify({"success":False})
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
