@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         binding.contentLogin.btnLogin.setOnClickListener(this)
 
         //Subscribe Push Notification

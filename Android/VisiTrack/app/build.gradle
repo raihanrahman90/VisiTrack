@@ -46,4 +46,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "de.hdodenhof:circleimageview:$circleimageview_version"
     implementation "androidx.preference:preference-ktx:$preference_version"
+
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
 }
