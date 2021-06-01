@@ -26,8 +26,13 @@ tf.gfile = tf.io.gfile
 db = getConnection()
 model_mask = tf.saved_model.load('gs://visitrack_storage/Mask_Model')
 frame = 0
+<<<<<<< HEAD
+lastFrame =-30
+PATH_TO_LABELS = './modelHuman.pbtxt'
+=======
 lastFrame =0 
 PATH_TO_LABELS = 'gs://visitrack_storage/Mask_Model/modelHuman.pbtxt'
+>>>>>>> ed3a2eac28dba31b986c941e70f54368b90e02f1
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
 category_index[42] = {"id":42, "name":"alert"}
 PATH_TO_TEST_IMAGES_DIR = pathlib.Path('object_detection/test_images')
@@ -85,7 +90,7 @@ def pelanggaran(text, img):
     nama = time.time()
     im = Image.fromarray(img)
     im.save(str(nama)+".jpg")
-    db.child("pelanggaran").push({"pelanggaran":text, "gambar":str(nama)+".jpg", "kamera":"20210530_163856"})
+    db.child("pelanggaran").push({"pelanggaran":text, "gambar":str(nama)+".jpg", "kamera":"20210530_163856", "tanggal":nama, "status":0})
     kirimNotif(text,text)
 
 
@@ -116,7 +121,7 @@ def show_inference(model, image_path):
                                              ceil((output_dict['detection_boxes'][i][3]*lebar)-(output_dict['detection_boxes'][i][1]*lebar))
                                              )
         masker,foto = maskPredict(potong)
-        if( masker == 0 and lastFrame-frame>30):
+        if( masker == 0 and frame-lastFrame>30):
             lastFrame = frame
             pelanggaran("Tidak Menggunakan Masker", image_np)
         for j in listIndexOfDetected:
