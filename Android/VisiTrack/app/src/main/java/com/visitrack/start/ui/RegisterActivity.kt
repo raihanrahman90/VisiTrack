@@ -42,7 +42,7 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                     if (register.data?.success == "true"){
                         tokenPreference.getToken()
                         startActivity(Intent(this, LoginActivity::class.java))
-                    } else {
+                    } else if (register.data?.success == "false"){
                         Toast.makeText(this, R.string.register_error, Toast.LENGTH_SHORT).show()
                         binding.contentRegister.edtUsername.setText("")
                         binding.contentRegister.edtPassword.setText("")

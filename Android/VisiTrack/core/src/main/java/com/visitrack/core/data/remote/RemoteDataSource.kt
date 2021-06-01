@@ -1,9 +1,11 @@
 package com.visitrack.core.data.remote
 
 import android.util.Log
-import com.visitrack.core.data.remote.model.login.LoginPost
+import com.visitrack.core.data.remote.model.login.LoginBody
 import com.visitrack.core.data.remote.model.login.LoginResponse
-import com.visitrack.core.data.remote.model.register.RegisterPost
+import com.visitrack.core.data.remote.model.logout.LogoutBody
+import com.visitrack.core.data.remote.model.logout.LogoutResponse
+import com.visitrack.core.data.remote.model.register.RegisterBody
 import com.visitrack.core.data.remote.model.register.RegisterResponse
 import com.visitrack.core.data.remote.network.ApiResponse
 import com.visitrack.core.data.remote.network.ApiService
@@ -14,15 +16,11 @@ import kotlinx.coroutines.flow.flowOn
 import java.lang.Exception
 
 class RemoteDataSource(private val apiService: ApiService) {
-    suspend fun login(loginPost: LoginPost): Flow<ApiResponse<LoginResponse>> {
+    suspend fun login(loginBody: LoginBody): Flow<ApiResponse<LoginResponse>> {
         return flow {
             try {
-                val response = apiService.login(loginPost)
-                if (response.success == "true"){
-                    emit(ApiResponse.Success(response))
-                } else {
-                    emit(ApiResponse.Error(response.success))
-                }
+                val response = apiService.login(loginBody)
+                emit(ApiResponse.Success(response))
             } catch (e: Exception){
                 emit(ApiResponse.Error(e.toString()))
                 Log.e(RemoteDataSource::class.java.simpleName, e.toString())
@@ -30,15 +28,23 @@ class RemoteDataSource(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun register(registerPost: RegisterPost): Flow<ApiResponse<RegisterResponse>> {
+    suspend fun logout(logoutBody: LogoutBody): Flow<ApiResponse<LogoutResponse>> {
         return flow {
             try {
-                val response = apiService.register(registerPost)
-                if (response.success == "true"){
-                    emit(ApiResponse.Success(response))
-                } else {
-                    emit(ApiResponse.Error(response.success))
-                }
+                val response = apiService.logout(logoutBody)
+                emit(ApiResponse.Success(response))
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.toString()))
+                Log.e(RemoteDataSource::class.java.simpleName, e.toString())
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun register(registerBody: RegisterBody): Flow<ApiResponse<RegisterResponse>> {
+        return flow {
+            try {
+                val response = apiService.register(registerBody)
+                emit(ApiResponse.Success(response))
             } catch (e: Exception){
                 emit(ApiResponse.Error(e.toString()))
                 Log.e(RemoteDataSource::class.java.simpleName, e.toString())
