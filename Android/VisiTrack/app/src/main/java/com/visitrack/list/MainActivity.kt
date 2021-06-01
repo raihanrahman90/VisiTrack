@@ -52,8 +52,12 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_logout -> {
                 val tokenPreferences = TokenPreference(this)
-                tokenPreferences.setToken("")
-                startActivity(Intent(this, LoginActivity::class.java))
+                viewModel.logout(tokenPreferences.getToken()!!).observe(this, { token ->
+                    if (token.data?.success == "true"){
+                        tokenPreferences.setToken("")
+                        startActivity(Intent(this, LoginActivity::class.java))
+                    }
+                })
                 true
             }
             else -> {

@@ -6,10 +6,15 @@ import androidx.lifecycle.asLiveData
 import com.visitrack.core.data.Resource
 import com.visitrack.core.domain.model.Camera
 import com.visitrack.core.domain.model.Statistics
+import com.visitrack.core.domain.model.User
 import com.visitrack.core.domain.model.Violation
 import com.visitrack.core.domain.usecase.UseCase
 
 class MainViewModel (private val useCase: UseCase): ViewModel() {
+
+    fun logout(token:String) : LiveData<Resource<User>> {
+        return useCase.logout(token).asLiveData()
+    }
 
     //fun getViolationStatistic() : LiveData<Resource<Statistics>> =
         //useCase.getStatistics().asLiveData()
