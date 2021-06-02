@@ -17,15 +17,15 @@
         app:layout_collapseMode="pin"
         app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light" />
 
-    <Switch
-        android:id="@+id/swDaily"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="@string/push_notification"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+<!--    <Switch-->
+<!--        android:id="@+id/swDaily"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="16dp"-->
+<!--        android:text="@string/push_notification"-->
+<!--        android:textColor="@android:color/white"-->
+<!--        android:textSize="16sp"-->
+<!--        tools:ignore="UseSwitchCompatOrMaterialXml" />-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/language"
         android:layout_width="match_parent"
