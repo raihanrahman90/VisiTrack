@@ -17,6 +17,7 @@ class DetailCameraActivity : AppCompatActivity() {
 
     private val viewModel: DetailCameraViewModel by viewModel()
     private lateinit var binding: ActivityDetailCameraBinding
+    private val id = String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailCameraBinding.inflate(layoutInflater)
@@ -24,7 +25,7 @@ class DetailCameraActivity : AppCompatActivity() {
         setUpToolbarVisitrack()
         setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_camera_visitrack)))
 
-        //getDetail(id)
+        getDetail(id.toString())
 
     }
 
