@@ -5,9 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Camera(
-    val idCamera: String?,
     val nameCamera: String,
-    val descCamera: String,
     val visitorCount: Int,
     val violationCount: Int,
     val imageUrl: String

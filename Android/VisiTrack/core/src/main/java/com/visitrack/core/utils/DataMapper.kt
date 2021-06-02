@@ -65,9 +65,7 @@ object DataMapper {
         val cameraList = ArrayList<Camera>()
         input.cameraItem.map {
             val camera = Camera(
-                it.id,
                 it.name,
-                it.desc,
                 it.visitorCount,
                 it.violationCount,
                 ApiUrl.IMAGE_URL + it.image
@@ -79,9 +77,7 @@ object DataMapper {
 
     fun mapCameraItemToDomain(input:CameraItem): Camera {
         return Camera(
-            input.id,
             input.name,
-            input.desc,
             input.visitorCount,
             input.violationCount,
             ApiUrl.IMAGE_URL + input.image

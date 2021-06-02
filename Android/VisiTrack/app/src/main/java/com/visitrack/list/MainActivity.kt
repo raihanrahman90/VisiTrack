@@ -37,9 +37,9 @@ class MainActivity : AppCompatActivity() {
         notificationAdapter = NotificationAdapter()
         cameraAdapter= CameraAdapter()
 
-        //getViolation()
-        //getNotification()
-        //getCamera()
+        getViolation()
+        getNotification()
+        getCamera()
 
     }
 
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /*private fun getViolation(){
+    private fun getViolation(){
         viewModel.getViolationStatistic().observe(this, { statistic ->
             when(statistic){
                 is Resource.Loading ->{
@@ -90,9 +90,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         })
-    }*/
+    }
 
-    /*private fun getNotification(){
+    private fun getNotification(){
         viewModel.getListNotification().observe(this, { notification ->
             when (notification){
                 is Resource.Loading ->{
@@ -115,9 +115,9 @@ class MainActivity : AppCompatActivity() {
             setHasFixedSize(true)
             adapter = notificationAdapter
         }
-    }*/
+    }
 
-    /*private fun getCamera(){
+    private fun getCamera(){
         viewModel.getListCamera().observe(this, { camera ->
             when (camera){
                 is Resource.Loading ->{
@@ -140,11 +140,11 @@ class MainActivity : AppCompatActivity() {
             setHasFixedSize(true)
             adapter = cameraAdapter
         }
-    }*/
+    }
 
     private fun setUpToolbarVisitrack(){
         setSupportActionBar(binding.visitrackToolbar)
-        //supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun setUpToolbarTitleVisitrack(title: String){

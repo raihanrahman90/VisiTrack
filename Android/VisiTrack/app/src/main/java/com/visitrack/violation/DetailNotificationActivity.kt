@@ -18,6 +18,7 @@ class DetailNotificationActivity : AppCompatActivity() {
 
     private val viewModel: DetailNotificationViewModel by viewModel()
     private lateinit var binding: ActivityDetailNotificationBinding
+    private val id = String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailNotificationBinding.inflate(layoutInflater)
@@ -26,15 +27,15 @@ class DetailNotificationActivity : AppCompatActivity() {
         setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_detail_visitrack)))
 
         binding.btnFinished.setOnClickListener{
-            //viewModel.getUpdateViolationNotification(id, 1)
+            viewModel.getUpdateViolationNotification(id.toString(), 1)
         }
 
         binding.btnError.setOnClickListener{
-            //viewModel.getUpdateViolationNotification(id, 2)
+            viewModel.getUpdateViolationNotification(id.toString(), 2)
 
         }
 
-        //getDetail(id)
+        getDetail(id.toString())
     }
 
     private fun getDetail (id: String){
@@ -67,12 +68,6 @@ class DetailNotificationActivity : AppCompatActivity() {
                 }
             }
         })
-    }
-    private fun display(violation: Violation) {
-        with(binding) {
-
-
-        }
     }
 
     private fun setUpToolbarVisitrack(){
