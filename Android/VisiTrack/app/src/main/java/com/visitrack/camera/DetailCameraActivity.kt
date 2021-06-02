@@ -30,9 +30,7 @@ class DetailCameraActivity : AppCompatActivity() {
 
         val id = intent.getParcelableArrayExtra(EXTRA_ID)
 
-        if (id != null) {
             getDetail(id.toString())
-        }
 
     }
 

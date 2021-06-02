@@ -28,20 +28,14 @@ class DetailNotificationActivity : AppCompatActivity() {
         val id = intent.getParcelableArrayExtra(MainActivity.EXTRA_ID)
 
         binding.btnFinished.setOnClickListener{
-            if (id != null) {
                 viewModel.getUpdateViolationNotification(id.toString(), 1)
-            }
         }
 
         binding.btnError.setOnClickListener {
-            if (id != null) {
                 viewModel.getUpdateViolationNotification(id.toString(), 2)
-            }
 
         }
-        if (id != null) {
             getDetail(id.toString())
-        }
     }
 
     private fun getDetail (id: String){
