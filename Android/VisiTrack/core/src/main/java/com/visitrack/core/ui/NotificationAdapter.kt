@@ -11,6 +11,7 @@ import com.visitrack.core.domain.model.Violation
 class NotificationAdapter: RecyclerView.Adapter<NotificationAdapter.ListViewHolder>() {
 
     private var listData = ArrayList<Violation>()
+    var onItemClick: ((Violation) -> Unit)? = null
 
     fun setData(newListData: List<Violation>) {
         listData.clear()
@@ -24,6 +25,12 @@ class NotificationAdapter: RecyclerView.Adapter<NotificationAdapter.ListViewHold
             with(binding) {
                 tvViolation.text = itemView.context.getString(R.string.violation_text, data.typeViolation)
                 tvTimestamp.text = data.timeViolation
+            }
+        }
+
+        init {
+            binding.root.setOnClickListener {
+                onItemClick?.invoke(listData[bindingAdapterPosition])
             }
         }
     }

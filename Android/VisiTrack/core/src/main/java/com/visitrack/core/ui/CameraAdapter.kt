@@ -11,6 +11,7 @@ import com.visitrack.core.domain.model.Camera
 
 class CameraAdapter: RecyclerView.Adapter<CameraAdapter.ListViewHolder>() {
     private var listData = ArrayList<Camera>()
+    var onItemClick: ((Camera) -> Unit)? = null
 
     fun setData(newListData: List<Camera>) {
         listData.clear()
@@ -26,6 +27,12 @@ class CameraAdapter: RecyclerView.Adapter<CameraAdapter.ListViewHolder>() {
                     .load(data.imageUrl)
                     .into(ivCamera)
                 tvCamera.text = data.nameCamera
+            }
+        }
+
+        init {
+            binding.root.setOnClickListener {
+                onItemClick?.invoke(listData[bindingAdapterPosition])
             }
         }
     }
