@@ -95,5 +95,15 @@ def logout():
             getToken()
             return jsonify({"success":True})
     return jsonify({"success":False})
+
+@app.route("/kamera")
+def getKamera():
+    kamera = []
+    data = db.child("kamera").get()
+    for item in data.each():
+        kamera.append({"kamera":item.val()['kamera']})
+    return jsonify({"success":True, "kamera":kamera})
+
+    
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
