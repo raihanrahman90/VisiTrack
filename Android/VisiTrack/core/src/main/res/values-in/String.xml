@@ -8,7 +8,7 @@
     <string name="dummy_camera">Dummy Camera</string>
     <string name="camera_image">Camera Image</string>
     <string name="violation">Pelanggaran</string>
-    <string name="violation_text">%1$s Ditemukan di %2$s</string>
+    <string name="violation_text">%1$s ditemukan</string>
 
     <string name="notification_channel_id">fcm_visitrack_channel</string>
     <string name="notification_channel_name">Pelanggaran</string>
