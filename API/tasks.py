@@ -76,6 +76,7 @@ def pelanggaran(text, img):
     im = Image.fromarray(img)
     im.save(str(nama)+".jpg")
     db.child("pelanggaran").push({"pelanggaran":text, "gambar":str(nama)+".jpg", "kamera":"20210530_163856", "tanggal":nama, "status":0})
+    db.child("kamera").child("20210530_163856").update({"gambar":str(nama)+".jpg"})
     kirimNotif(text,text)
 
 
