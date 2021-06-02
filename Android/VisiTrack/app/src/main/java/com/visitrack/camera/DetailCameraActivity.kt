@@ -1,12 +1,16 @@
 package com.visitrack.camera
 
+import android.graphics.Camera
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
+import android.os.strictmode.Violation
 import android.view.View
 import com.bumptech.glide.Glide
 import com.visitrack.R
 import com.visitrack.core.data.Resource
 import com.visitrack.databinding.ActivityDetailCameraBinding
+import com.visitrack.list.MainActivity.Companion.EXTRA_ID
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -17,7 +21,6 @@ class DetailCameraActivity : AppCompatActivity() {
 
     private val viewModel: DetailCameraViewModel by viewModel()
     private lateinit var binding: ActivityDetailCameraBinding
-    private val id = String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailCameraBinding.inflate(layoutInflater)
@@ -25,7 +28,11 @@ class DetailCameraActivity : AppCompatActivity() {
         setUpToolbarVisitrack()
         setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_camera_visitrack)))
 
-        getDetail(id.toString())
+        val id = intent.getParcelableArrayExtra(EXTRA_ID)
+
+        if (id != null) {
+            getDetail(id.toString())
+        }
 
     }
 

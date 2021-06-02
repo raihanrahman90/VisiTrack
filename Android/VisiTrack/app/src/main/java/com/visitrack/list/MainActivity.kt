@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.bumptech.glide.Glide
 import com.visitrack.R
+import com.visitrack.camera.DetailCameraActivity
 import com.visitrack.core.data.Resource
 import com.visitrack.core.domain.model.Camera
 import com.visitrack.core.domain.model.Statistics
@@ -20,6 +21,7 @@ import com.visitrack.core.utils.TokenPreference
 import com.visitrack.databinding.ActivityMainBinding
 import com.visitrack.settings.SettingsActivity
 import com.visitrack.start.ui.LoginActivity
+import com.visitrack.violation.DetailNotificationActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +29,10 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModel()
     private lateinit var notificationAdapter: NotificationAdapter
     private lateinit var cameraAdapter: CameraAdapter
+
+    companion object {
+        const val EXTRA_ID = "extraId"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +47,18 @@ class MainActivity : AppCompatActivity() {
         getViolation()
         getNotification()
         getCamera()
+
+        notificationAdapter.onItemClick = { selectedData ->
+            val intent = Intent(this, DetailNotificationActivity::class.java)
+            intent.putExtra(EXTRA_ID, selectedData)
+            startActivity(intent)
+        }
+
+        cameraAdapter.onItemClick = { selectedData ->
+            val intent = Intent(this, DetailCameraActivity::class.java)
+            intent.putExtra(EXTRA_ID, selectedData)
+            startActivity(intent)
+        }
 
     }
 

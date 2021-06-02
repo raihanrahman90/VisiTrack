@@ -8,6 +8,7 @@ import com.visitrack.R
 import com.visitrack.core.data.Resource
 import com.visitrack.core.domain.model.Violation
 import com.visitrack.databinding.ActivityDetailNotificationBinding
+import com.visitrack.list.MainActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -18,24 +19,29 @@ class DetailNotificationActivity : AppCompatActivity() {
 
     private val viewModel: DetailNotificationViewModel by viewModel()
     private lateinit var binding: ActivityDetailNotificationBinding
-    private val id = String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailNotificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setUpToolbarVisitrack()
         setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_detail_visitrack)))
+        val id = intent.getParcelableArrayExtra(MainActivity.EXTRA_ID)
 
         binding.btnFinished.setOnClickListener{
-            viewModel.getUpdateViolationNotification(id.toString(), 1)
+            if (id != null) {
+                viewModel.getUpdateViolationNotification(id.toString(), 1)
+            }
         }
 
-        binding.btnError.setOnClickListener{
-            viewModel.getUpdateViolationNotification(id.toString(), 2)
+        binding.btnError.setOnClickListener {
+            if (id != null) {
+                viewModel.getUpdateViolationNotification(id.toString(), 2)
+            }
 
         }
-
-        getDetail(id.toString())
+        if (id != null) {
+            getDetail(id.toString())
+        }
     }
 
     private fun getDetail (id: String){
