@@ -22,8 +22,13 @@ import com.visitrack.databinding.ActivityMainBinding
 import com.visitrack.settings.SettingsActivity
 import com.visitrack.start.ui.LoginActivity
 import com.visitrack.violation.DetailNotificationActivity
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import org.koin.android.viewmodel.ext.android.viewModel
 
+
+@ExperimentalCoroutinesApi
+@FlowPreview
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModel()

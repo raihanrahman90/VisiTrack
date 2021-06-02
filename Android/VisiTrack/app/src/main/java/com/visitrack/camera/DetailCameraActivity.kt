@@ -1,10 +1,8 @@
 package com.visitrack.camera
 
-import android.graphics.Camera
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
-import android.os.strictmode.Violation
 import android.view.View
 import com.bumptech.glide.Glide
 import com.visitrack.R
