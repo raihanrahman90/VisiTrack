@@ -79,9 +79,9 @@ class MainActivity : AppCompatActivity() {
                     binding.progressBar.visibility= View.GONE
                     val statistics = statistic.data
                     with(binding) {
-                        binding.contentGeneral.tvVisitorCount.text = statistics?.visitorCount.toString()
-                        binding.contentGeneral.tvCameraCount.text = statistics?.cameraCount.toString()
-                        binding.contentGeneral.tvAnother.text = statistics?.violationCount.toString()
+                        contentGeneral.tvVisitorCount.text = statistics?.visitorCount.toString()
+                        contentGeneral.tvCameraCount.text = statistics?.cameraCount.toString()
+                        contentGeneral.tvAnother.text = statistics?.violationCount.toString()
                     }
                 }
                 is Resource.Error ->{

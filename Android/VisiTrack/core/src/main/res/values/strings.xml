@@ -8,7 +8,7 @@
     <string name="dummy_camera">Dummy Camera</string>
     <string name="camera_image">Camera Image</string>
     <string name="violation">Violation</string>
-    <string name="violation_text">%1$s found in %2$s</string>
+    <string name="violation_text">%1$s found</string>
 
     <string name="notification_channel_id">fcm_visitrack_channel</string>
     <string name="notification_channel_name">Violation</string>

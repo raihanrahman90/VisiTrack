@@ -31,7 +31,7 @@ class FirebaseNotification: FirebaseMessagingService() {
         val channelName = getString(R.string.notification_channel_name)
 
         //ADD INTENT
-        val intent = Intent(this, Class.forName("com.visitrack.app.MainActivity"))
+        val intent = Intent(this, Class.forName("com.visitrack.list.MainActivity"))
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
 

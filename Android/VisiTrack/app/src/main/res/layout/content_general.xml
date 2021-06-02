@@ -30,7 +30,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
-            android:background="@color/cardview_dark_background"
+            android:background="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -81,12 +81,12 @@
             tools:text="@string/dummy_number" />
 
         <TextView
-            android:id="@+id/tv_head_another"
+            android:id="@+id/tv_head_violation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
-            android:text="Another data"
+            android:text="@string/violation_count"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_head_camera_count"
@@ -100,8 +100,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_head_another"
-            app:layout_constraintTop_toTopOf="@+id/tv_head_another"
+            app:layout_constraintStart_toEndOf="@+id/tv_head_violation"
+            app:layout_constraintTop_toTopOf="@+id/tv_head_violation"
             tools:text="@string/dummy_number" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
