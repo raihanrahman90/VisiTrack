@@ -49,7 +49,6 @@ def daftar():
 @app.route("/statistik")
 def statistik():
     data = db.child('pelanggaran').get()
-    print(type(data))
     return jsonify({'jumlah_orang': str(getJumlahOrang()),
                     'jumlah_kamera': 1,
                     'jumlah_pelanggaran':len(data.val()),
@@ -99,9 +98,11 @@ def logout():
 @app.route("/kamera")
 def getKamera():
     kamera = []
+    pelanggaran = db.child("pelanggaran").get()
+    jumlah_pelanggaran = len(pelanggaran.val())
     data = db.child("kamera").get()
     for item in data.each():
-        kamera.append({"kamera":item.val()['kamera']})
+        kamera.append({"kamera":item.val()['kamera'], "jumlah_orang":str(getJumlahOrang()), "gambar":item.val()["gambar"], "jumlah_pelanggaran":jumlah_pelanggaran})
     return jsonify({"success":True, "kamera":kamera})
 
     
