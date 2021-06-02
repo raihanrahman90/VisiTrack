@@ -42,9 +42,7 @@ class DetailCameraActivity : AppCompatActivity() {
                         .load((data?.imageUrl))
                         .into(binding.ivCamera)
                     with(binding) {
-                        tvId.text = data?.idCamera.toString()
                         tvName.text = data?.nameCamera
-                        tvDesc.text = data?.descCamera
                         tvVisitorCount.text = data?.visitorCount.toString()
                         tvViolationCount.text = data?.violationCount.toString()
                     }

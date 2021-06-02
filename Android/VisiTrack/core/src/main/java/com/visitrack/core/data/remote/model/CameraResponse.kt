@@ -15,7 +15,7 @@ data class CameraItem(
     val name: String,
 
     @field:SerializedName("jumlah_orang")
-    val visitorCount: Int,
+    val visitorCount: String,
 
     @field:SerializedName("jumlah_pelanggaran")
     val violationCount: Int
