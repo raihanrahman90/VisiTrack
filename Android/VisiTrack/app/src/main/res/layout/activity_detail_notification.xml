@@ -35,7 +35,6 @@
         android:layout_height="wrap_content"
         android:background="@color/cardview_dark_background"
         android:contentDescription="@string/notification_image"
-        android:minHeight="250dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/visitrack_detail_toolbar" />
@@ -92,24 +91,14 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_date" />
 
     <TextView
-        android:id="@+id/tv_head_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/description"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_head_time"
-        app:layout_constraintTop_toBottomOf="@+id/tv_time" />
-
-    <TextView
         android:id="@+id/tv_head_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/status"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/tv_head_desc"
-        app:layout_constraintTop_toBottomOf="@+id/tv_desc" />
+        app:layout_constraintStart_toStartOf="@+id/tv_head_time"
+        app:layout_constraintTop_toBottomOf="@+id/tv_time" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -166,20 +155,10 @@
         tools:text="@string/dummy_time" />
 
     <TextView
-        android:id="@+id/tv_desc"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/tv_time"
-        app:layout_constraintStart_toStartOf="@id/tv_time"
-        app:layout_constraintTop_toTopOf="@+id/tv_head_desc"
-        tools:text="@string/dummy_text_long" />
-
-    <TextView
         android:id="@+id/tv_status"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/tv_desc"
-        app:layout_constraintStart_toStartOf="@+id/tv_desc"
+        app:layout_constraintStart_toStartOf="@+id/tv_time"
         app:layout_constraintTop_toTopOf="@+id/tv_head_status"
         tools:text="@string/dummy_text" />
 
@@ -201,5 +180,4 @@
         android:text="@string/detection_error"
         app:layout_constraintStart_toStartOf="@+id/tv_status"
         app:layout_constraintTop_toTopOf="@+id/btn_finished" />
--->
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,18 +6,16 @@ import android.os.Bundle
 import android.view.View
 import com.bumptech.glide.Glide
 import com.visitrack.R
-import com.visitrack.core.data.Resource
+import com.visitrack.core.domain.model.Camera
 import com.visitrack.databinding.ActivityDetailCameraBinding
-import com.visitrack.list.MainActivity.Companion.EXTRA_ID
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
-import org.koin.android.viewmodel.ext.android.viewModel
 
 @ExperimentalCoroutinesApi
 @FlowPreview
 class DetailCameraActivity : AppCompatActivity() {
 
-    private val viewModel: DetailCameraViewModel by viewModel()
+    //private val viewModel: DetailCameraViewModel by viewModel()
     private lateinit var binding: ActivityDetailCameraBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,14 +24,25 @@ class DetailCameraActivity : AppCompatActivity() {
         setUpToolbarVisitrack()
         setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_camera_visitrack)))
 
-        val id = intent.getParcelableArrayExtra(EXTRA_ID)
+        val data = intent.getParcelableExtra<Camera>(EXTRA_ID)
 
-            getDetail(id.toString())
-
+        if (data != null) {
+            getDetail(data)
+        }
     }
 
-    private fun getDetail (id: String){
-        viewModel.getDetailCamera(id).observe(this, { camera ->
+    private fun getDetail(data: Camera) {
+        binding.progressBar.visibility= View.GONE
+        Glide.with(this@DetailCameraActivity)
+            .load((data.imageUrl))
+            .into(binding.ivCamera)
+        with(binding) {
+            tvName.text = data.nameCamera
+            tvVisitorCount.text = data.visitorCount.toString()
+            tvViolationCount.text = data.violationCount.toString()
+        }
+
+        /*viewModel.getDetailCamera(id).observe(this, { camera ->
             when(camera){
                 is Resource.Loading -> {
                     binding.progressBar.visibility= View.VISIBLE
@@ -54,7 +63,7 @@ class DetailCameraActivity : AppCompatActivity() {
                     binding.progressBar.visibility = View.GONE
                 }
             }
-        })
+        })*/
     }
 
     private fun setUpToolbarVisitrack(){
@@ -64,5 +73,9 @@ class DetailCameraActivity : AppCompatActivity() {
 
     private fun setUpToolbarTitleVisitrack(title: String){
         supportActionBar?.title = title
+    }
+
+    companion object {
+        const val EXTRA_ID = "extraId"
     }
 }

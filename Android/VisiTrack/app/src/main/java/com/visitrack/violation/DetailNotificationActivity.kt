@@ -25,7 +25,7 @@ class DetailNotificationActivity : AppCompatActivity() {
         setContentView(binding.root)
         setUpToolbarVisitrack()
         setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_detail_visitrack)))
-        val id = intent.getParcelableArrayExtra(MainActivity.EXTRA_ID)
+        val id = intent.getStringExtra(EXTRA_ID)
 
         binding.btnFinished.setOnClickListener{
                 viewModel.getUpdateViolationNotification(id.toString(), 1)
@@ -35,7 +35,7 @@ class DetailNotificationActivity : AppCompatActivity() {
                 viewModel.getUpdateViolationNotification(id.toString(), 2)
 
         }
-            getDetail(id.toString())
+        getDetail(id.toString())
     }
 
     private fun getDetail (id: String){
@@ -51,7 +51,7 @@ class DetailNotificationActivity : AppCompatActivity() {
                         .load((data?.imageUrl))
                         .into(binding.ivNotification)
                     with(binding) {
-                        tvId.text = data?.idViolation.toString()
+                        tvId.text = id
                         tvType.text = data?.typeViolation
                         tvCamera.text = data?.camera.toString()
                         tvDate.text = data?.dateViolation
@@ -77,5 +77,9 @@ class DetailNotificationActivity : AppCompatActivity() {
 
     private fun setUpToolbarTitleVisitrack(title: String){
         supportActionBar?.title = title
+    }
+
+    companion object {
+        const val EXTRA_ID = "extraId"
     }
 }

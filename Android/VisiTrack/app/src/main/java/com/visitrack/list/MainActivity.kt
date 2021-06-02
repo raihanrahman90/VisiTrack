@@ -35,10 +35,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var notificationAdapter: NotificationAdapter
     private lateinit var cameraAdapter: CameraAdapter
 
-    companion object {
-        const val EXTRA_ID = "extraId"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -55,13 +51,13 @@ class MainActivity : AppCompatActivity() {
 
         notificationAdapter.onItemClick = { selectedData ->
             val intent = Intent(this, DetailNotificationActivity::class.java)
-            intent.putExtra(EXTRA_ID, selectedData)
+            intent.putExtra(DetailNotificationActivity.EXTRA_ID, selectedData.idViolation)
             startActivity(intent)
         }
 
         cameraAdapter.onItemClick = { selectedData ->
             val intent = Intent(this, DetailCameraActivity::class.java)
-            intent.putExtra(EXTRA_ID, selectedData)
+            intent.putExtra(DetailCameraActivity.EXTRA_ID, selectedData)
             startActivity(intent)
         }
 
