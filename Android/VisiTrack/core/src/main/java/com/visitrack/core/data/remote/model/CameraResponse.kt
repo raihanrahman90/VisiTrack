@@ -11,14 +11,8 @@ data class CameraItem(
     @field:SerializedName("gambar")
     val image: String,
 
-    @field:SerializedName("id")
-    val id: String? = null,
-
-    @field:SerializedName("name")
+    @field:SerializedName("kamera")
     val name: String,
-
-    @field:SerializedName("desc")
-    val desc: String,
 
     @field:SerializedName("jumlah_orang")
     val visitorCount: Int,
