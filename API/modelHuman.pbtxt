@@ -3,8 +3,3 @@ item {
   id: 1
   display_name: "person"
 }
-item {
-  name: "/m/0199g"
-  id: 2
-  display_name: "person-like"
-}

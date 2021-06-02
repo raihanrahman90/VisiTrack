@@ -30,23 +30,13 @@ lastFrame =-30
 PATH_TO_LABELS = './modelHuman.pbtxt'
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
 category_index[42] = {"id":42, "name":"alert"}
-PATH_TO_TEST_IMAGES_DIR = pathlib.Path('object_detection/test_images')
-TEST_IMAGE_PATHS = sorted(list(PATH_TO_TEST_IMAGES_DIR.glob("*.jpg")))
-TEST_IMAGE_PATHS
 
 
 def load_model():
-  model_dir = r"C:\Users\Asus\.keras\datasets\modelHuman-master\saved_model" 											##load model from cloudstorage(bucket:visitrack_storage)
+  model_dir = r"C:\Users\Asus\.keras\datasets\modelHuman-master\saved_model"
   model = tf.saved_model.load(str(model_dir))
   model = model.signatures['serving_default']
   return model
-
-
-def load_image_into_numpy_array(image):
-    (im_width, im_height) = image.size
-    return np.array(image.getdata()).reshape(
-        (im_height, im_width, 3)).astype(np.uint8)
-
 
 
 def run_inference_for_single_image(model, image):
@@ -148,24 +138,7 @@ def show_inference(model, image_path):
 from datetime import datetime
 import time
 jumlah_orang = 0
-def bicycle_detect(image,classes,score,boxes):
-    
-    for i in range(10):
-        if(classes[i]==2 and score[i]>0.8):
-            
-            h,w=image.shape[0:2]
-            #image.shape=[height,width,3]
-            
-            ymin,xmin,ymax,xmax=boxes[i]
 
-            now = datetime.now()
-            dt_string = now.strftime("%d_%m_%Y_%H_%M_%S")
-            
-            center=(int(((xmin+xmax)/2)*w),int(((ymin+ymax)/2)*h))
-            cv2.circle(image,center,10,(0,0,255),-1)
-            
-            file_name=os.path.join('/output_image',dt_string+'.jpg') 					##image output directory (cloudstorage)
-            cv2.imwrite(file_name,image)
 
 def hitungJarak(data1,data2):
     x1 = (data1[3]+data1[1])/2
@@ -184,7 +157,6 @@ def runProgram():
     DetectedBefore = np.array([])
     global frame
     while(True):
-        try:
             frame +=1
             ret,img=video.read()
             img, detected=show_inference(detection_model,img)
@@ -210,6 +182,3 @@ def runProgram():
                                 if(DetectedBefore[j]["tidak_terdetek"])>5:
                                     listDrop.append(j)
                     DetectedBefore = np.delete(DetectedBefore, listDrop)
-
-        except:
-            video=cv2.VideoCapture(r'E:/TEST/20210530_163856.mp4')

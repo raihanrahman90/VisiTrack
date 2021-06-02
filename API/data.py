@@ -16,6 +16,7 @@ db = firebase.database()
 def getConnection():
     return db
 
+#get all login token device from firebase
 def getToken():
     global token
     token = []
@@ -28,9 +29,8 @@ def getToken():
         except:
             continue
 
+#send notification to all login device
 def kirimNotif(judul, body):
-    tokenRaihan = "e093oF6IR7GY6JWhIos02Q:APA91bEQ47ysaOlHHgMxyPxl2H3Ft_KmKnONVU2326xgXLvZh4bUR-XhQORJT2kX8FIDLvGyWuQfWStNvjZzEmjUvC2v4j5mCn0wwyRpdGPEr5j9zjXnmP8T9nfIRf2VgnDRRVSWZq8Q"
-    registration_id = tokenRaihan
     global token
     result = push_service.notify_multiple_devices(registration_ids=token, message_title=judul, message_body=body)
     print(result)
