@@ -18,6 +18,7 @@ import com.visitrack.core.ui.CameraAdapter
 import com.visitrack.core.ui.NotificationAdapter
 import com.visitrack.core.utils.TokenPreference
 import com.visitrack.databinding.ActivityMainBinding
+import com.visitrack.settings.SettingsActivity
 import com.visitrack.start.ui.LoginActivity
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -61,7 +62,11 @@ class MainActivity : AppCompatActivity() {
                 })
                 true
             }
-            else -> {
+            R.id.action_settings -> {
+                val settings = Intent(this@MainActivity, SettingsActivity::class.java)
+                startActivity(settings)
+                true
+            }else -> {
                 super.onOptionsItemSelected(item)
             }
         }

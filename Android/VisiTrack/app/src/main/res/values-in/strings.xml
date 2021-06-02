@@ -61,4 +61,5 @@
     <string name="status_default">Belum ada tanggapan</string>
     <string name="status_done">Sudah ditanggapi</string>
     <string name="status_false">Kesalahan deteksi</string>
+    <string name="setting">Pengaturan</string>
 </resources>

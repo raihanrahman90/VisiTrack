@@ -59,4 +59,5 @@
     <string name="status_default">No respond yet</string>
     <string name="status_done">Responded</string>
     <string name="status_false">False Detection</string>
+    <string name="setting">Setting</string>
 </resources>
