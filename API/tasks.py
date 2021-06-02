@@ -157,6 +157,7 @@ def runProgram():
     DetectedBefore = np.array([])
     global frame
     while(True):
+        try:
             frame +=1
             ret,img=video.read()
             img, detected=show_inference(detection_model,img)
@@ -182,3 +183,5 @@ def runProgram():
                                 if(DetectedBefore[j]["tidak_terdetek"])>5:
                                     listDrop.append(j)
                     DetectedBefore = np.delete(DetectedBefore, listDrop)
+        except:
+            video=cv2.VideoCapture(r'E:/TEST/20210530_163856.mp4')	##video input test
