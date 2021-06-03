@@ -15,7 +15,7 @@ class SettingsActivity : AppCompatActivity(), View.OnClickListener {
     companion object {
 //        private const val Visitrack_REMINDER = "Visitrack_pref"
     }
-    private lateinit var Visitrackpreference: SharedPreferences
+//    private lateinit var visitrackPreference: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingsBinding.inflate(layoutInflater)

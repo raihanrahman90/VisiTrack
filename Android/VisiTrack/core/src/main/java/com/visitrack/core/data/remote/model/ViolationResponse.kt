@@ -1,7 +1,6 @@
 package com.visitrack.core.data.remote.model
 
 import com.google.gson.annotations.SerializedName
-import java.sql.Timestamp
 
 data class ViolationResponse(
     @field:SerializedName("pelanggaran")

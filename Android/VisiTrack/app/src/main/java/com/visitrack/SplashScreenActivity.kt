@@ -1,15 +1,9 @@
 package com.visitrack
 
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.util.Log
-import android.widget.Toast
-import com.google.firebase.messaging.FirebaseMessaging
 import com.visitrack.core.utils.TokenPreference
 import com.visitrack.databinding.ActivitySplashscreenBinding
 import com.visitrack.list.MainActivity

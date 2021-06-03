@@ -6,15 +6,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
-import com.bumptech.glide.Glide
 import com.visitrack.R
 import com.visitrack.camera.DetailCameraActivity
 import com.visitrack.core.data.Resource
-import com.visitrack.core.domain.model.Camera
-import com.visitrack.core.domain.model.Statistics
 import com.visitrack.core.ui.CameraAdapter
 import com.visitrack.core.ui.NotificationAdapter
 import com.visitrack.core.utils.TokenPreference

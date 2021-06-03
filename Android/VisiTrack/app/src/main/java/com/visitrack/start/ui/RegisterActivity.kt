@@ -28,10 +28,10 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btn_register -> {
                 val passwords = binding.contentRegister.edtPassword.text.toString().trim()
                 val username = binding.contentRegister.edtUsername.text.toString().trim()
-                if (username.equals("")) {
+                if (username == "") {
                     binding.contentRegister.edtUsername.error = "Please Enter Your Username"
                     return
-                } else if (passwords.equals("")) {
+                } else if (passwords == "") {
                     binding.contentRegister.edtPassword.error = "Please Enter Your Password"
                     return
                 }

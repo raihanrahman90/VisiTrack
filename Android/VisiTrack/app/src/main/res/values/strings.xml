@@ -60,4 +60,5 @@
     <string name="status_done">Responded</string>
     <string name="status_false">False Detection</string>
     <string name="setting">Setting</string>
+    <string name="language_logo">Language Logo</string>
 </resources>

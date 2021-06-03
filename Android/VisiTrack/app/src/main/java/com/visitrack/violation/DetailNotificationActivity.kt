@@ -6,9 +6,7 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.visitrack.R
 import com.visitrack.core.data.Resource
-import com.visitrack.core.domain.model.Violation
 import com.visitrack.databinding.ActivityDetailNotificationBinding
-import com.visitrack.list.MainActivity
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.FlowPreview
 import org.koin.android.viewmodel.ext.android.viewModel
