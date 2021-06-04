@@ -1,5 +1,5 @@
 # Face Mask Detection
-This project use a Deep Neural Network, more specifically a Convolutional Neural Network, to differentiate between images of people with and without masks. The CNN manages to get an accuracy of **96.01% on the training set** and **91.18% on the validation set**. The CNN was created using the Google Collaboratory infrastructure with the Python programming language and using the Keras Framework and TensorFlow which was then saved in the form of a Jupyter Notebooks ".ipynb" file.
+This project use a Deep Neural Network, more specifically a Convolutional Neural Network, to differentiate between images of people with and without masks. The CNN manages to get an accuracy of **96.01% on the training set** and **91.18% on the validation set**. The CNN was created using the Google Collaboratory infrastructure with the Python programming language and using the Keras Framework and TensorFlow then saved in Jupyter Notebooks ".ipynb" file.
 ## Dataset Overview
 The dataset from Kaggle (https://www.kaggle.com/prithwirajmitra/covid-face-mask-detection-dataset). This dataset contains about 1006 images with 503 images containing images of people wearing masks and 503 images with people without masks, for mask and nonmask. You can download the datasets and upload it on your google drive or local storage.
 ## Build and Train Model on _Google Colaboratory_
