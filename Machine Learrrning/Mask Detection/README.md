@@ -15,4 +15,4 @@ The dataset from Kaggle (https://www.kaggle.com/prithwirajmitra/covid-face-mask-
 2. Open the file using _Google Colab_
 3. Run every cell
 4. On the last cell, upload image of people using mask or without mask to test the model
-5. After the process done, it will show a "(image_name.jpg) **is using mask**" or "(image_name.jpg) **is using not mask**" depends on the people in picture using mask or not 
+5. After the process done, it will show a "(image_name.jpg) **is using mask**" or "(image_name.jpg) **is not using mask**" depends on the people in picture using mask or not 
