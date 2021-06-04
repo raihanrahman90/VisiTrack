@@ -10,3 +10,5 @@ The dataset from Kaggle (https://www.kaggle.com/prithwirajmitra/covid-face-mask-
 6. Or you can run it manually on each cell or row to see how each process works
 7. After the training is done, download the model (Mask_detection.h5)
 8. The model can be deploy as API to be use on another platform to make a real-time facemask detection using camera or video  
+## Detection Test
+1. Click
