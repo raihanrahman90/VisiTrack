@@ -1,4 +1,4 @@
-package com.visitrack.list
+package com.visitrack.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         notificationAdapter.onItemClick = { selectedData ->
             val intent = Intent(this, DetailNotificationActivity::class.java)
-            intent.putExtra(DetailNotificationActivity.EXTRA_ID, selectedData.idViolation)
+            intent.putExtra(DetailNotificationActivity.EXTRA_ID, selectedData)
             startActivity(intent)
         }
 
@@ -156,7 +156,6 @@ class MainActivity : AppCompatActivity() {
         })
         with(binding.contentCamera.rvNotification){
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-            OrientationHelper.HORIZONTAL
             setHasFixedSize(true)
             adapter = cameraAdapter
         }
@@ -164,7 +163,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpToolbarVisitrack(){
         setSupportActionBar(binding.visitrackToolbar)
-//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun setUpToolbarTitleVisitrack(title: String){

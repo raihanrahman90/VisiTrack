@@ -1,9 +1,8 @@
 package com.visitrack.di
 
-import com.visitrack.camera.DetailCameraViewModel
 import com.visitrack.core.domain.usecase.Interactor
 import com.visitrack.core.domain.usecase.UseCase
-import com.visitrack.list.MainViewModel
+import com.visitrack.main.MainViewModel
 import com.visitrack.start.viewmodel.LoginViewModel
 import com.visitrack.start.viewmodel.RegisterViewModel
 import com.visitrack.violation.DetailNotificationViewModel
@@ -19,5 +18,4 @@ val viewModelModule = module {
     viewModel { RegisterViewModel(get()) }
     viewModel { MainViewModel(get()) }
     viewModel { DetailNotificationViewModel(get()) }
-    viewModel { DetailCameraViewModel(get()) }
 }

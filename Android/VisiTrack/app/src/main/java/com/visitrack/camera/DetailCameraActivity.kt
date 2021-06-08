@@ -15,7 +15,6 @@ import kotlinx.coroutines.FlowPreview
 @FlowPreview
 class DetailCameraActivity : AppCompatActivity() {
 
-    //private val viewModel: DetailCameraViewModel by viewModel()
     private lateinit var binding: ActivityDetailCameraBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,29 +40,6 @@ class DetailCameraActivity : AppCompatActivity() {
             tvVisitorCount.text = data.visitorCount.toString()
             tvViolationCount.text = data.violationCount.toString()
         }
-
-        /*viewModel.getDetailCamera(id).observe(this, { camera ->
-            when(camera){
-                is Resource.Loading -> {
-                    binding.progressBar.visibility= View.VISIBLE
-                }
-                is Resource.Success -> {
-                    binding.progressBar.visibility= View.GONE
-                    val data = camera.data
-                    Glide.with(this@DetailCameraActivity)
-                        .load((data?.imageUrl))
-                        .into(binding.ivCamera)
-                    with(binding) {
-                        tvName.text = data?.nameCamera
-                        tvVisitorCount.text = data?.visitorCount.toString()
-                        tvViolationCount.text = data?.violationCount.toString()
-                    }
-                }
-                is Resource.Error ->{
-                    binding.progressBar.visibility = View.GONE
-                }
-            }
-        })*/
     }
 
     private fun setUpToolbarVisitrack(){

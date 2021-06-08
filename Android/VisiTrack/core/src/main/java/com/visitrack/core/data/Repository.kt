@@ -90,7 +90,7 @@ class Repository(private val remoteDataSource: RemoteDataSource): IRepository {
 
         }.asFlow()
 
-    override fun getViolationDetail(id: String): Flow<Resource<Violation>> =
+    /*override fun getViolationDetail(id: String): Flow<Resource<Violation>> =
         object : NetworkBoundResource<Violation, ViolationItem>() {
             override suspend fun load(data: ViolationItem): Flow<Violation> {
                 return listOf(DataMapper.mapViolationItemToDomain(data)).asFlow()
@@ -112,7 +112,7 @@ class Repository(private val remoteDataSource: RemoteDataSource): IRepository {
                 return remoteDataSource.getCameraDetail(id)
             }
 
-        }.asFlow()
+        }.asFlow()*/
 
     override fun updateViolation(id: String, status: Int): Flow<Resource<Success>> =
         object : NetworkBoundResource<Success, SuccessResponse>() {

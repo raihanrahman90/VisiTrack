@@ -33,13 +33,13 @@ class Interactor(private val repository: IRepository): UseCase {
         return repository.getCameraList()
     }
 
-    override fun getViolationDetail(id: String): Flow<Resource<Violation>> {
+    /*override fun getViolationDetail(id: String): Flow<Resource<Violation>> {
         return repository.getViolationDetail(id)
     }
 
     override fun getCameraDetail(id: String): Flow<Resource<Camera>> {
         return repository.getCameraDetail(id)
-    }
+    }*/
 
     override fun updateViolation(id: String, status: Int): Flow<Resource<Success>> {
         return repository.updateViolation(id, status)

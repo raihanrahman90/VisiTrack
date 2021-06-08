@@ -42,7 +42,7 @@
         </activity>
         <activity android:name=".camera.DetailCameraActivity" />
         <activity android:name=".violation.DetailNotificationActivity" />
-        <activity android:name=".list.MainActivity" />
+        <activity android:name=".main.MainActivity" />
     </application>
 
 </manifest>

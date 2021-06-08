@@ -47,7 +47,7 @@ object DataMapper {
         return violationList
     }
 
-    fun mapViolationItemToDomain(input: ViolationItem): Violation {
+    /*fun mapViolationItemToDomain(input: ViolationItem): Violation {
         val date = getDateTime(input.timestamp, 0)
         val time = getDateTime(input.timestamp, 1)
         return Violation(
@@ -59,7 +59,7 @@ object DataMapper {
             input.status,
             ApiUrl.IMAGE_URL + input.image
         )
-    }
+    }*/
 
     fun mapCameraResponseToDomain(input: CameraResponse): List<Camera> {
         val cameraList = ArrayList<Camera>()
@@ -73,15 +73,6 @@ object DataMapper {
             cameraList.add(camera)
         }
         return cameraList
-    }
-
-    fun mapCameraItemToDomain(input:CameraItem): Camera {
-        return Camera(
-            input.name,
-            input.visitorCount.toInt(),
-            input.violationCount,
-            ApiUrl.IMAGE_URL + input.image
-        )
     }
 
     private fun getDateTime(timestamp: Double, type: Int): String {

@@ -14,7 +14,7 @@ interface UseCase {
     fun getStatistics(): Flow<Resource<Statistics>>
     fun getNotificationList(): Flow<Resource<List<Violation>>>
     fun getCameraList(): Flow<Resource<List<Camera>>>
-    fun getViolationDetail(id: String): Flow<Resource<Violation>>
-    fun getCameraDetail(id: String): Flow<Resource<Camera>>
+    /*fun getViolationDetail(id: String): Flow<Resource<Violation>>
+    fun getCameraDetail(id: String): Flow<Resource<Camera>>*/
     fun updateViolation(id: String, status: Int): Flow<Resource<Success>>
 }

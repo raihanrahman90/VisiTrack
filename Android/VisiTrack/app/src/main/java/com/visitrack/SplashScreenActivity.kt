@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.visitrack.core.utils.TokenPreference
 import com.visitrack.databinding.ActivitySplashscreenBinding
-import com.visitrack.list.MainActivity
+import com.visitrack.main.MainActivity
 import com.visitrack.start.ui.LoginActivity
 
 class SplashScreenActivity : AppCompatActivity() {

@@ -24,14 +24,14 @@ interface ApiService {
     @GET("pelanggaran")
     suspend fun getNotificationList(): ViolationResponse
 
-    @GET("pelanggaran/{id}")
-    suspend fun getViolationDetail(@Path("id")id: String): ViolationItem
-
     @GET("kamera")
     suspend fun getCameraList(): CameraResponse
 
-    @GET("kamera/{id}")
-    suspend fun getCameraDetail(@Path("id")id: String): CameraItem
+    /*@GET("pelanggaran/{id}")
+    suspend fun getViolationDetail(@Path("id")id: String): ViolationItem*/
+
+    /*@GET("kamera/{id}")
+    suspend fun getCameraDetail(@Path("id")id: String): CameraItem*/
 
     @POST("pelanggaran/{id}")
     suspend fun updateViolation(@Path("id")id: String, @Body violationBody: ViolationBody): SuccessResponse

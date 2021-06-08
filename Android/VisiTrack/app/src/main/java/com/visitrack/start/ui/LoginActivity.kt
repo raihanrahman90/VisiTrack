@@ -10,7 +10,7 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.visitrack.R
 import com.visitrack.core.utils.TokenPreference
 import com.visitrack.databinding.ActivityLoginBinding
-import com.visitrack.list.MainActivity
+import com.visitrack.main.MainActivity
 import com.visitrack.start.viewmodel.LoginViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
