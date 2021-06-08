@@ -10,7 +10,7 @@ config = {
 }
 firebase = pyrebase.initialize_app(config)
 auth = firebase.auth()
-user = auth.sign_in_with_email_and_password("m1161483@bangkit.academy", "raihan")
+user = auth.sign_in_with_email_and_password("c1161482@bangkit.academy", "nabilakbar")
 user = auth.sign_in_anonymous()
 db = firebase.database()
 def getConnection():

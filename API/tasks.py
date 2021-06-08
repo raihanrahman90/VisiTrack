@@ -19,21 +19,22 @@ from object_detection.utils import visualization_utils as vis_util
 from data import getConnection, kirimNotif
 import cv2
 from math import ceil
-
+PATH_TO_LABELS = './modelHuman.pbtxt'  
+model_dir = r"C:\Users\Asus\.keras\datasets\modelHuman-master\saved_model"
+linkModelMask = '../../Mask_detection.h5'
 keras = tf.keras
 utils_ops.tf = tf.compat.v1
 tf.gfile = tf.io.gfile
 db = getConnection()
-model_mask = keras.models.load_model('../../Mask_detection.h5')
+model_mask = keras.models.load_model(linkModelMask)
 frame = 0
 lastFrame =-30
-PATH_TO_LABELS = './modelHuman.pbtxt'
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
 category_index[42] = {"id":42, "name":"alert"}
 
 
 def load_model():
-  model_dir = r"C:\Users\Asus\.keras\datasets\modelHuman-master\saved_model"
+  global model_dir
   model = tf.saved_model.load(str(model_dir))
   model = model.signatures['serving_default']
   return model

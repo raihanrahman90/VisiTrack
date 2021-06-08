@@ -18,9 +18,13 @@ db = getConnection()
 token= []
 def getToken():
     return token
+
+
 @app.route("/")
 def percobaan():
     return "nabil"
+
+
 @app.route("/login", methods=['POST', 'GET'])
 def index():
     username = request.json['username']
@@ -60,7 +64,8 @@ def getPelanggaran():
     data = db.child('pelanggaran').get()
     for item in data.each():
         pelanggaran.append({"id":item.key(), "pesan":item.val()['pelanggaran'], "gambar":item.val()['gambar'], "kamera":item.val()['kamera'], "tanggal":item.val()["tanggal"], "status":item.val()["status"]})
-    return jsonify({"success":True, "pelanggaran":pelanggaran})
+    terurut = sorted(pelanggaran, key=lambda x: x["tanggal"], reverse = True)
+    return jsonify({"success":True, "pelanggaran":terurut})
 
 @app.route("/pelanggaran/<id>", methods=["POST","GET"])
 def getPelanggaranId(id):
@@ -69,7 +74,6 @@ def getPelanggaranId(id):
         print(id)
         for item in data.each():
             if item.key() == id:
-                print(item.key())
                 return jsonify({"pesan":item.val()['pelanggaran'], "gambar":item.val()['gambar'], "kamera":item.val()['kamera'], "tanggal":item.val()["tanggal"], "status":item.val()["status"]})
         return jsonify({"success":False})
     if request.method == 'POST':
