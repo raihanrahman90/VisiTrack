@@ -77,18 +77,6 @@ class RemoteDataSource(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun getViolationDetail(id: String): Flow<ApiResponse<ViolationItem>> {
-        return flow {
-            try {
-                val response = apiService.getViolationDetail(id)
-                emit(ApiResponse.Success(response))
-            } catch (e: Exception) {
-                emit(ApiResponse.Error(e.toString()))
-                Log.e(TAG, e.toString())
-            }
-        }.flowOn(Dispatchers.IO)
-    }
-
     suspend fun getCameraList(): Flow<ApiResponse<CameraResponse>> {
         return flow {
             try {
@@ -98,18 +86,6 @@ class RemoteDataSource(private val apiService: ApiService) {
                 } else {
                     emit(ApiResponse.Success(response))
                 }
-            } catch (e: Exception) {
-                emit(ApiResponse.Error(e.toString()))
-                Log.e(TAG, e.toString())
-            }
-        }.flowOn(Dispatchers.IO)
-    }
-
-    suspend fun getCameraDetail(id: String): Flow<ApiResponse<CameraItem>> {
-        return flow {
-            try {
-                val response = apiService.getCameraDetail(id)
-                emit(ApiResponse.Success(response))
             } catch (e: Exception) {
                 emit(ApiResponse.Error(e.toString()))
                 Log.e(TAG, e.toString())
