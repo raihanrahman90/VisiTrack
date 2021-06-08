@@ -63,4 +63,6 @@
     <string name="status_false">Kesalahan deteksi</string>
     <string name="setting">Pengaturan</string>
     <string name="language_logo">Logo Bahasa</string>
+    <string name="no_data">Data tidak ditemukan</string>
+    <string name="violation_updated">Status pelanggaran telah diubah!</string>
 </resources>

@@ -93,6 +93,18 @@ class RemoteDataSource(private val apiService: ApiService) {
         }.flowOn(Dispatchers.IO)
     }
 
+    suspend fun getViolationDetail(id: String): Flow<ApiResponse<ViolationItem>> {
+        return flow {
+            try {
+                val response = apiService.getViolationDetail(id)
+                emit(ApiResponse.Success(response))
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.toString()))
+                Log.e(TAG, e.toString())
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
     suspend fun updateViolation(id: String, violationBody: ViolationBody): Flow<ApiResponse<SuccessResponse>> {
         return flow {
             try {

@@ -12,6 +12,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ProgressBar
+            android:id="@+id/pb_general"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hr_general"
+            tools:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_error_general"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/no_data"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hr_general"
+            tools:visibility="gone"/>
+
         <TextView
             android:id="@+id/tv_general"
             android:layout_width="match_parent"
@@ -35,6 +58,12 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_general" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_content_general"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="tv_head_visitor_count,tv_visitor_count,tv_another,tv_head_violation,tv_head_camera_count,tv_camera_count" />
 
         <TextView
             android:id="@+id/tv_head_visitor_count"

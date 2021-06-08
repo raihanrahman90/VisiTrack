@@ -23,6 +23,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@android:color/holo_orange_dark" />
@@ -30,7 +31,8 @@
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="@string/notification_channel_id"/>
 
-        <activity android:name=".settings.SettingsActivity" />
+        <activity android:name=".settings.SettingsActivity"
+            android:parentActivityName=".main.MainActivity"/>
         <activity android:name=".start.ui.RegisterActivity" />
         <activity android:name=".start.ui.LoginActivity" />
         <activity android:name=".SplashScreenActivity">
@@ -40,8 +42,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".camera.DetailCameraActivity" />
-        <activity android:name=".violation.DetailNotificationActivity" />
+        <activity android:name=".camera.DetailCameraActivity"
+            android:parentActivityName=".main.MainActivity"/>
+        <activity android:name=".violation.DetailNotificationActivity"
+            android:parentActivityName=".main.MainActivity"/>
         <activity android:name=".main.MainActivity" />
     </application>
 

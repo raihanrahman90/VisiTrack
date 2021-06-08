@@ -27,11 +27,8 @@ interface ApiService {
     @GET("kamera")
     suspend fun getCameraList(): CameraResponse
 
-    /*@GET("pelanggaran/{id}")
-    suspend fun getViolationDetail(@Path("id")id: String): ViolationItem*/
-
-    /*@GET("kamera/{id}")
-    suspend fun getCameraDetail(@Path("id")id: String): CameraItem*/
+    @GET("pelanggaran/{id}")
+    suspend fun getViolationDetail(@Path("id")id: String): ViolationItem
 
     @POST("pelanggaran/{id}")
     suspend fun updateViolation(@Path("id")id: String, @Body violationBody: ViolationBody): SuccessResponse

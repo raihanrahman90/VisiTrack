@@ -44,8 +44,8 @@ class NotificationAdapter: RecyclerView.Adapter<NotificationAdapter.ListViewHold
     }
 
     override fun getItemCount(): Int {
-        return if (listData.size > 500) {
-            500
+        return if (listData.size > 100) {
+            100
         } else {
             listData.size
         }

@@ -49,8 +49,9 @@
     <string name="language">Language</string>
     <string name="push_notification">Push Notification</string>
     <string name="register_here">Don\'t have account? Register here</string>
+    <string name="no_data">Data not found</string>
+    <string name="violation_updated">Violation status updated!</string>
 
-    //toolbar
     <string name="toolbar_visitrack">Visitrack</string>
     <string name="toolbar_detail_visitrack">Detail Notification</string>
     <string name="toolbar_camera_visitrack">Detail Camera</string>

@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Violation(
-    val idViolation: String?,
+    val idViolation: String,
     val typeViolation: String,
     val camera: String,
     val dateViolation: String,

@@ -3,6 +3,7 @@ package com.visitrack.violation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.visitrack.R
 import com.visitrack.core.data.Resource
@@ -25,36 +26,55 @@ class DetailNotificationActivity : AppCompatActivity() {
         setUpToolbarVisitrack()
         setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_detail_visitrack)))
 
-        val data = intent.getParcelableExtra<Violation>(EXTRA_ID)
+        val data = intent.getStringExtra(EXTRA_ID)
         binding.btnFinished.setOnClickListener{
-            data?.idViolation?.let { it1 -> viewModel.getUpdateViolationNotification(it1, 1) }
+            if (data != null) {
+                viewModel.getUpdateViolationNotification(data, 1)
+                Toast.makeText(this, getString(R.string.violation_updated), Toast.LENGTH_SHORT).show()
+            }
         }
         binding.btnError.setOnClickListener {
-            data?.idViolation?.let { it1 -> viewModel.getUpdateViolationNotification(it1, 2) }
-
+            if (data != null) {
+                viewModel.getUpdateViolationNotification(data, 2)
+                Toast.makeText(this, getString(R.string.violation_updated), Toast.LENGTH_SHORT).show()
+            }
         }
         if (data != null) {
             getDetail(data)
         }
     }
 
-    private fun getDetail (data: Violation){
-        binding.progressBar.visibility = View.GONE
-        Glide.with(this@DetailNotificationActivity)
-            .load((data?.imageUrl))
-            .into(binding.ivNotification)
-        with(binding) {
-            tvId.text = data.idViolation
-            tvType.text = data.typeViolation
-            tvCamera.text = data.camera.toString()
-            tvDate.text = data.dateViolation
-            tvTime.text = data.timeViolation
-            when(data.statusViolation) {
-                0 -> tvStatus.text = getString(R.string.status_default)
-                1 -> tvStatus.text = getString(R.string.status_done)
-                2 -> tvStatus.text = getString(R.string.status_false)
+    private fun getDetail (id: String){
+        viewModel.getNotificationDetail(id).observe(this, { violation ->
+            when(violation) {
+                is Resource.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+                is Resource.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    val data = violation.data
+                    Glide.with(this@DetailNotificationActivity)
+                        .load((data?.imageUrl))
+                        .into(binding.ivNotification)
+                    with(binding) {
+                        tvId.text = id
+                        tvType.text = data?.typeViolation
+                        tvCamera.text = data?.camera.toString()
+                        tvDate.text = data?.dateViolation
+                        tvTime.text = data?.timeViolation
+                        when(data?.statusViolation) {
+                            0 -> tvStatus.text = getString(R.string.status_default)
+                            1 -> tvStatus.text = getString(R.string.status_done)
+                            2 -> tvStatus.text = getString(R.string.status_false)
+                        }
+                    }
+                }
+                is Resource.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(this, getString(R.string.no_data), Toast.LENGTH_SHORT).show()
+                }
             }
-        }
+        })
     }
 
     private fun setUpToolbarVisitrack(){

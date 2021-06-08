@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         notificationAdapter.onItemClick = { selectedData ->
             val intent = Intent(this, DetailNotificationActivity::class.java)
-            intent.putExtra(DetailNotificationActivity.EXTRA_ID, selectedData)
+            intent.putExtra(DetailNotificationActivity.EXTRA_ID, selectedData.idViolation)
             startActivity(intent)
         }
 
@@ -57,6 +57,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getViolation()
+        getNotification()
+        getCamera()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -91,22 +98,27 @@ class MainActivity : AppCompatActivity() {
         viewModel.getViolationStatistic().observe(this, { statistic ->
             when(statistic){
                 is Resource.Loading ->{
-                    binding.progressBar.visibility= View.VISIBLE
-                    binding.progressBar.visibility= View.GONE
+                    with(binding.contentGeneral) {
+                        pbGeneral.visibility = View.VISIBLE
+                        tvErrorGeneral.visibility = View.GONE
+                        groupContentGeneral.visibility = View.GONE
+                    }
                 }
                 is Resource.Success ->{
-                    binding.progressBar.visibility= View.VISIBLE
-                    binding.progressBar.visibility= View.GONE
                     val statistics = statistic.data
-                    with(binding) {
-                        contentGeneral.tvVisitorCount.text = statistics?.visitorCount.toString()
-                        contentGeneral.tvCameraCount.text = statistics?.cameraCount.toString()
-                        contentGeneral.tvAnother.text = statistics?.violationCount.toString()
+                    with(binding.contentGeneral) {
+                        pbGeneral.visibility = View.GONE
+                        groupContentGeneral.visibility = View.VISIBLE
+                        tvVisitorCount.text = statistics?.visitorCount.toString()
+                        tvCameraCount.text = statistics?.cameraCount.toString()
+                        tvAnother.text = statistics?.violationCount.toString()
                     }
                 }
                 is Resource.Error ->{
-                    binding.progressBar.visibility = View.GONE
-                    binding.progressBar.visibility = View.VISIBLE
+                    with(binding.contentGeneral){
+                        pbGeneral.visibility = View.GONE
+                        tvErrorGeneral.visibility = View.VISIBLE
+                    }
                 }
             }
         })
@@ -116,49 +128,64 @@ class MainActivity : AppCompatActivity() {
         viewModel.getListNotification().observe(this, { notification ->
             when (notification){
                 is Resource.Loading ->{
-                    binding.progressBar.visibility = View.VISIBLE
+                    with(binding.contentNotification){
+                        pbNotification.visibility = View.VISIBLE
+                        tvErrorNotification.visibility = View.GONE
+                        rvNotification.visibility = View.GONE
+                    }
                 }
 
                 is Resource.Success -> {
-                    binding.progressBar.visibility = View.GONE
                     notification.data?.let { notificationAdapter.setData(it) }
+                    with(binding.contentNotification) {
+                        pbNotification.visibility = View.GONE
+                        rvNotification.visibility = View.VISIBLE
+                        rvNotification.layoutManager = LinearLayoutManager(this@MainActivity)
+                        rvNotification.setHasFixedSize(true)
+                        rvNotification.adapter = notificationAdapter
+                    }
                 }
                 is Resource.Error -> {
-                    binding.progressBar.visibility = View.GONE
+                    with(binding.contentNotification) {
+                        pbNotification.visibility = View.GONE
+                        tvErrorNotification.visibility = View.VISIBLE
+                    }
                 }
 
             }
         })
-
-        with(binding.contentNotification.rvNotification){
-            layoutManager = LinearLayoutManager(this@MainActivity)
-            setHasFixedSize(true)
-            adapter = notificationAdapter
-        }
     }
 
     private fun getCamera(){
         viewModel.getListCamera().observe(this, { camera ->
             when (camera){
                 is Resource.Loading ->{
-                    binding.progressBar.visibility = View.VISIBLE
+                    with(binding.contentCamera){
+                        pbCamera.visibility = View.VISIBLE
+                        tvErrorCamera.visibility = View.GONE
+                        rvCamera.visibility = View.GONE
+                    }
                 }
 
                 is Resource.Success -> {
-                    binding.progressBar.visibility = View.GONE
                     camera.data?.let { cameraAdapter.setData(it) }
+                    with(binding.contentCamera){
+                        pbCamera.visibility = View.GONE
+                        rvCamera.visibility = View.VISIBLE
+                        rvCamera.layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+                        rvCamera.setHasFixedSize(true)
+                        rvCamera.adapter = cameraAdapter
+                    }
                 }
                 is Resource.Error -> {
-                    binding.progressBar.visibility = View.GONE
+                    with(binding.contentCamera) {
+                        pbCamera.visibility = View.GONE
+                        tvErrorCamera.visibility = View.VISIBLE
+                    }
                 }
 
             }
         })
-        with(binding.contentCamera.rvNotification){
-            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
-            setHasFixedSize(true)
-            adapter = cameraAdapter
-        }
     }
 
     private fun setUpToolbarVisitrack(){
