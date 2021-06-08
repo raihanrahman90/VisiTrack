@@ -62,4 +62,5 @@
     <string name="status_false">False Detection</string>
     <string name="setting">Setting</string>
     <string name="language_logo">Language Logo</string>
+    <string name="violation_not_updated">Violation status not updated!</string>
 </resources>

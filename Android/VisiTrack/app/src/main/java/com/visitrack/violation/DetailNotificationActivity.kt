@@ -27,20 +27,50 @@ class DetailNotificationActivity : AppCompatActivity() {
         setUpToolbarTitleVisitrack(resources.getString((R.string.toolbar_detail_visitrack)))
 
         val data = intent.getStringExtra(EXTRA_ID)
+
+        if (data != null) {
+            getDetail(data)
+        }
+
         binding.btnFinished.setOnClickListener{
             if (data != null) {
-                viewModel.getUpdateViolationNotification(data, 1)
-                Toast.makeText(this, getString(R.string.violation_updated), Toast.LENGTH_SHORT).show()
+                viewModel.getUpdateViolationNotification(data, 1).observe(this, { success ->
+                    when(success){
+                        is Resource.Loading -> {
+                            binding.progressBar.visibility = View.VISIBLE
+                        }
+                        is Resource.Success -> {
+                            binding.progressBar.visibility = View.GONE
+                            Toast.makeText(this, getString(R.string.violation_updated), Toast.LENGTH_SHORT).show()
+                            getDetail(data)
+                        }
+                        is Resource.Error -> {
+                            binding.progressBar.visibility = View.GONE
+                            Toast.makeText(this, getString(R.string.violation_not_updated), Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                })
             }
         }
         binding.btnError.setOnClickListener {
             if (data != null) {
-                viewModel.getUpdateViolationNotification(data, 2)
-                Toast.makeText(this, getString(R.string.violation_updated), Toast.LENGTH_SHORT).show()
+                viewModel.getUpdateViolationNotification(data, 2).observe(this, { success ->
+                    when(success){
+                        is Resource.Loading -> {
+                            binding.progressBar.visibility = View.VISIBLE
+                        }
+                        is Resource.Success -> {
+                            binding.progressBar.visibility = View.GONE
+                            Toast.makeText(this, getString(R.string.violation_updated), Toast.LENGTH_SHORT).show()
+                            getDetail(data)
+                        }
+                        is Resource.Error -> {
+                            binding.progressBar.visibility = View.GONE
+                            Toast.makeText(this, getString(R.string.violation_not_updated), Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                })
             }
-        }
-        if (data != null) {
-            getDetail(data)
         }
     }
 

@@ -65,4 +65,5 @@
     <string name="language_logo">Logo Bahasa</string>
     <string name="no_data">Data tidak ditemukan</string>
     <string name="violation_updated">Status pelanggaran telah diubah!</string>
+    <string name="violation_not_updated">Status pelanggaran tidak bisa diubah!</string>
 </resources>
